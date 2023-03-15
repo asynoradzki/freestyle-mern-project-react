@@ -1,14 +1,12 @@
 // importy compomentow do refactoru, niewiem czy destrukturyzacja nie dziala
 import NavBar from './components/navbar/NavBar.js';
-import MovieList from './components/moviethumbnail/MovieThumbnail.js';
-import SearchMenu from './components/rightDrawer/RightDrawer.js';
-import MovieList from './components/moviethumbnail/MovieThumbnail.js';
-import SearchMenu from './components/rightDrawer/RightDrawer.js';
+import RightDrawer from './components/rightDrawer/RightDrawer.js';
+import MovieThumbnail from './components/moviethumbnail/MovieThumbnail.js';
+import SearchMenu from './components/searchmenu/SearchMenu.js';
 import Create from './components/create/Create.js'
 import Edit from './components/edit/Edit.js'
 import './App.css';
-import {useState} from 'react'
-import MovieThumbnail from './components/moviethumbnail/MovieThumbnail.js';
+import {useState, useEffect} from 'react'
 
 function App() {
     const [display, setDisplay] = useState(true);
@@ -53,7 +51,8 @@ function App() {
             {display && (
                 <div className="Main" >
                     <MovieThumbnail />
-                    <SearchMenu isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} allFilms={allFilms} filteredFilms={filteredFilms} setFilteredFilms={setFilteredFilms} />
+                    <RightDrawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} allFilms={allFilms} filteredFilms={filteredFilms} setFilteredFilms={setFilteredFilms}  />
+                    
                 </div>
             )}
             {create && <Create />}
