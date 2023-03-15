@@ -9,6 +9,7 @@ import {useState} from 'react'
 
 function App() {
   const [display, setDisplay] = useState(true)
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [create, setCreate] = useState(false)
   const [edit, setEdit] = useState(false)
   const [disabledButtons, setDisabledButtons] = useState({
@@ -28,15 +29,17 @@ function App() {
     setEdit(button === "edit")
   }
 
+
+
   return (
-    <div className="App">
+    <div className="App" style={{ marginRight: isDrawerOpen ? '270px' : 0 }}>
       <header className="NavBar">
       <NavBar disabledButtons={disabledButtons} handleClick={handleClick}/>
       </header>
         {display && (
-        <div className="Main">
+        <div className="Main" >
           <MovieList />
-          <SearchMenu />
+          <SearchMenu isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
         </div> 
         )}
         {create && (

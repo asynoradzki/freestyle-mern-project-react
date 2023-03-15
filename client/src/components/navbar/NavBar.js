@@ -1,5 +1,5 @@
 //import  './navbar.css'
-import  React from 'react'
+import React from 'react'
 
 const NavBar = ({disabledButtons, handleClick}) => {
   return (
@@ -9,6 +9,7 @@ const NavBar = ({disabledButtons, handleClick}) => {
       <button onClick={()=> handleClick("edit")} disabled={disabledButtons.edit}>Edit</button>
       <button disabled>DarkTheme</button>
       <button disabled>Login/Sign-in</button>
+      
     </nav>
   )
 }
