@@ -1,7 +1,7 @@
 // importy compomentow do refactoru, niewiem czy destrukturyzacja nie dziala
 import NavBar from './components/navbar/NavBar.js';
 import MovieList from './components/moviethumbnail/MovieThumbnail.js';
-import SearchMenu from './components/searchmenu/SearchMenu.js';
+import SearchMenu from './components/rightDrawer/RightDrawer.js';
 import Create from './components/create/Create.js'
 import Edit from './components/edit/Edit.js'
 import './App.css';

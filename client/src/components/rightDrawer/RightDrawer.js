@@ -2,7 +2,7 @@ import { Drawer, Box, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 
 
-function SearchMenu({ isDrawerOpen, setIsDrawerOpen }) {
+function RightDrawer({ isDrawerOpen, setIsDrawerOpen }) {
 
   return (
     <div>
@@ -35,4 +35,4 @@ function SearchMenu({ isDrawerOpen, setIsDrawerOpen }) {
   );
 }
 
-export default SearchMenu;
+export default RightDrawer;
