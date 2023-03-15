@@ -25,14 +25,12 @@ const SearchMenu = ({ allFilms, filteredFilms, setFilteredFilms }) => {
     }
 
     function handleOnchange(e) {
-        // console.log(filteredFilms);
         setInputValue(e.target.value);
         const filtered = localFilteredFilms.filter((film) => {
             const filmTitleLowerCase = film.title.toLowerCase();
             const searchedStringLowerCase = e.target.value.toLowerCase();
             return filmTitleLowerCase.includes(searchedStringLowerCase);
         });
-        // console.log(filtered);
         setFilteredFilms(filtered);
     }
 
