@@ -1,0 +1,10 @@
+.SearchMenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.FilterButtons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+}
