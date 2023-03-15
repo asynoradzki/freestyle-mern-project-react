@@ -1,15 +1,17 @@
 // importy compomentow do refactoru, niewiem czy destrukturyzacja nie dziala
-import NavBar from "./components/navbar/NavBar.js";
-import MovieList from "./components/movieList/MovieList.js";
-import SearchMenu from "./components/searchmenu/SearchMenu.js";
-import Create from "./components/create/Create.js";
-import Edit from "./components/edit/Edit.js";
-import "./App.css";
-import { useState, useEffect } from "react";
+import NavBar from './components/navbar/NavBar.js';
+import MovieList from './components/moviethumbnail/MovieThumbnail.js';
+import SearchMenu from './components/rightDrawer/RightDrawer.js';
+import Create from './components/create/Create.js'
+import Edit from './components/edit/Edit.js'
+import './App.css';
+import {useState} from 'react'
+import MovieThumbnail from './components/moviethumbnail/MovieThumbnail.js';
 
 function App() {
     const [display, setDisplay] = useState(true);
-    const [create, setCreate] = useState(false);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [create, setCreate] = useState(false);
     const [edit, setEdit] = useState(false);
     const [disabledButtons, setDisabledButtons] = useState({
         display: true,
@@ -42,14 +44,14 @@ function App() {
     };
 
     return (
-        <div className="App">
+        <div className="App" style={{ marginRight: isDrawerOpen ? '270px' : 0 }}>
             <header className="NavBar">
                 <NavBar disabledButtons={disabledButtons} handleClick={handleClick} />
             </header>
             {display && (
-                <div className="Main">
-                    <MovieList />
-                    <SearchMenu allFilms={allFilms} filteredFilms={filteredFilms} setFilteredFilms={setFilteredFilms} />
+                <div className="Main" >
+                    <MovieThumbnail />
+                    <SearchMenu isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} allFilms={allFilms} filteredFilms={filteredFilms} setFilteredFilms={setFilteredFilms} />
                 </div>
             )}
             {create && <Create />}
