@@ -1,0 +1,62 @@
+@import url(../../colors.css);
+
+.movieThumbnail {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 300px;
+    height: 250px; 
+    border: 1px solid var(--dark-mode-primary);
+    background: var(--dark-mode-primary);;
+    border-radius: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.movieThumbnailButton  {
+    border: none;
+    border-radius: 20px;
+    background: none;
+    color: var(--dark-mode-secondary);;
+    padding: 0;
+}
+
+.movieListButtonImage {
+    height: 100px;
+    width: 300px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.movieListButtonImage img {
+    height: 100px;
+    width: 300px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.movieThumbnailButtonName h3 {
+    font-size: 1.25em;
+    color: var(--dark-mode-text);
+    background-color: var(--dark-mode-secondary);
+    margin: 10px 0 0 0;
+    padding: 0
+}
+
+.movieThumbnailButtonGenre p {
+    font-size: 0.95em;
+    color: var(--dark-mode-text);
+    background-color: var(--dark-mode-secondary);
+    margin: 10px 0 0 0;
+    padding: 0
+}
+
+.movieThumbnailButtonRuntime p {
+    font-size: 0.95em;
+    color: var(--dark-mode-text);
+    background-color: var(--dark-mode-secondary);
+    margin: 10px 0 0 0;
+    padding: 0;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}

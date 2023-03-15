@@ -1,0 +1,13 @@
+:root .dark {
+   --dark-mode-background: #37306B;
+   --dark-mode-primary: #66347F;
+   --dark-mode-secondary: #9E4784;
+   --dark-mode-text: #F7EFE5;
+}
+
+:root .white {
+   --white-mode-background: #F7EFE5;
+   --white-mode-primary: #674188;
+   --white-mode-secondary: #C3ACD0;
+   --white-mode-text: #37306B;
+}
