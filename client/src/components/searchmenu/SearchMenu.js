@@ -2,7 +2,7 @@ import "./SearchMenu.css";
 import React from "react";
 import { useState, useEffect } from "react";
 
-const SearchMenu = ({ allFilms, filteredFilms, setFilteredFilms }) => {
+const SearchMenu = ({ allFilms, setFilteredFilms }) => {
     const [localFilteredFilms, setLocalFilteredFilms] = useState([]);
     const [inputValue, setInputValue] = useState("");
     let allGenres = getFilmGenres(allFilms);
@@ -53,12 +53,12 @@ const SearchMenu = ({ allFilms, filteredFilms, setFilteredFilms }) => {
     return (
         <div className="SearchMenu">
             <form>
-                <input className="input" name="title" type="text" placeholder="title" value={inputValue} onChange={handleOnchange} />
+                <input className="input dark" name="title" type="text" placeholder="Movie title.." value={inputValue} onChange={handleOnchange} />
             </form>
             <div className="FilterButtons">
-                <button onClick={handleAllClick}>all</button>
+                <button className="Button dark"onClick={handleAllClick}>all</button>
                 {allGenres.map((genre, index) => (
-                    <button key={index} onClick={()=>handleGenreBtnClick(genre)}>{genre}</button>
+                    <button className="Button dark" key={index} onClick={()=>handleGenreBtnClick(genre)}>{genre}</button>
                 ))}
             </div>
         </div>

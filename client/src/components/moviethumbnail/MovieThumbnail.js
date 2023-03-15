@@ -1,21 +1,20 @@
 import React from 'react'
 import './MovieThumbnail.css';
-const MovieThumbnail = () => {
+const MovieThumbnail = ( { imageUrl, title, genres, runtime } ) => {
   return (
      <div className='movieThumbnail dark'>
         <button className='movieThumbnailButton dark'>
            <div className='movieListButtonImage dark'>
-              {/* <img src={imageUrl} alt={title} /> */}
-              <img src={"abc"} alt={"abc"} />
+              <img src={imageUrl} alt={title} />
            </div>
            <div className='movieThumbnailButtonName dark'>
-              {/* <h3>{title}</h3> */} <h3>The Loneliness of the Long Distance Runner</h3>
+              <h3>{title}</h3> 
            </div>
            <div className='movieThumbnailButtonGenre dark'>
-            {/* <p>{genres}</p> tutaj map po array z genres? */} <p>Drama, Drama, Kremowka</p>
+            <p>{genres}</p>
            </div>
            <div className='movieThumbnailButtonRuntime dark'>
-            {/* <p>{`${runtime} minutes`}</p> */} <p>2137 minutes</p>
+            <p>{`${runtime} minutes`}</p>
            </div>
       </button>
      </div>
