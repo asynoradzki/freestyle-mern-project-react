@@ -34,6 +34,19 @@ function App() {
 
   const handleClick = (button) => {
     setDisabledButtons({
+      display: button === 'display',
+      create: button === 'create',
+      edit: button === 'edit',
+      login: button === 'login',
+    })
+    setDisplay(button === "display")
+    setCreate(button === "create")
+    setEdit(button === "edit")
+    setLogin(button === "login")
+  }
+
+
+
       display: button === "display",
       create: button === "create",
       edit: button === "edit",

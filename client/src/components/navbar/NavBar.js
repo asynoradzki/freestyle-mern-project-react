@@ -8,7 +8,7 @@ const NavBar = ({disabledButtons, handleClick}) => {
       <button onClick={()=> handleClick("create")} disabled={disabledButtons.create} >Create New</button>
       <button onClick={()=> handleClick("edit")} disabled={disabledButtons.edit}>Edit</button>
       <button disabled>DarkTheme</button>
-      <button disabled>Login/Sign-in</button>
+      <button onClick={()=> handleClick("login")} disabled={disabledButtons.login}>Login/Sign-in</button>
       
     </nav>
   )
