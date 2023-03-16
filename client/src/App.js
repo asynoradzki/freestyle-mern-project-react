@@ -2,9 +2,9 @@
 import NavBar from "./components/navbar/NavBar.js";
 import RightDrawer from "./components/rightDrawer/RightDrawer.js";
 import MovieThumbnail from "./components/moviethumbnail/MovieThumbnail.js";
-import SearchMenu from "./components/searchmenu/SearchMenu.js";
 import Create from "./components/create/Create.js";
 import Edit from "./components/edit/Edit.js";
+import Login from "./components/login/Login.js"
 import "./App.css";
 import { useState, useEffect } from "react";
 
@@ -13,10 +13,12 @@ function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [create, setCreate] = useState(false);
   const [edit, setEdit] = useState(false);
+  const [login, setLogin] = useState(false)
   const [disabledButtons, setDisabledButtons] = useState({
     display: true,
     create: false,
     edit: false,
+    login: false,
   });
   const [allFilms, setAllFilms] = useState([]);
   const [filteredFilms, setFilteredFilms] = useState([]);
@@ -37,38 +39,46 @@ function App() {
       display: button === "display",
       create: button === "create",
       edit: button === "edit",
+      login: button === "login"
     });
     setDisplay(button === "display");
     setCreate(button === "create");
     setEdit(button === "edit");
+    setLogin(button === "login")
   };
   // imageUrl, title, genres, runtime
   return (
     <div className="App" style={{ marginRight: isDrawerOpen ? "270px" : 0 }}>
-      <header className="NavBar">
+      <header className="NavBar dark">
         <NavBar disabledButtons={disabledButtons} handleClick={handleClick} />
       </header>
-      {display && (
-        <div className="Main">
-          {filteredFilms.map((film) => (
-            <MovieThumbnail
-              key={film._id}
-              imageUrl={film.imageUrl}
-              title={film.title}
-              genres={film.genres}
+      <div className="MainDisplay dark">
+
+        {display && (
+          <div className="Main dark">
+            {filteredFilms.map((film) => (
+              <MovieThumbnail
+                key={film._id}
+                imageUrl={film.imageUrl}
+                title={film.title}
+                genres={film.genres}
+                runtime={film.runtime}
+              />
+            ))}
+            <RightDrawer
+              isDrawerOpen={isDrawerOpen}
+              setIsDrawerOpen={setIsDrawerOpen}
+              allFilms={allFilms}
+              filteredFilms={filteredFilms}
+              setFilteredFilms={setFilteredFilms}
             />
-          ))}
-          <RightDrawer
-            isDrawerOpen={isDrawerOpen}
-            setIsDrawerOpen={setIsDrawerOpen}
-            allFilms={allFilms}
-            filteredFilms={filteredFilms}
-            setFilteredFilms={setFilteredFilms}
-          />
-        </div>
-      )}
-      {create && <Create />}
-      {edit && <Edit />}
+          </div>
+        )}
+        {edit && <Edit />}
+        {create && <Create />}
+        {login && <Login />}
+      </div>
+      
     </div>
   );
 }

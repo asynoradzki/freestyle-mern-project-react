@@ -58,7 +58,7 @@
   color: var(--dark-mode-primary)
 }
 
-.Button.active {
-  background-color: var(--dark-mode-text);
-  color: var(--dark-mode-primary)
-}
+  .active {
+    background-color: var(--dark-mode-text);
+    color: var(--dark-mode-primary)
+  }
