@@ -1,12 +1,22 @@
 @import url(../../colors.css);
 
 span.title {
-    font-size: 50px;
+    font-size: 30px;
 }
 
 span.year,
 span.runtime {
-    font-size: small
+    font-size: small;
+        margin: 0 20px;
+}
+
+div.yourRating {
+    margin-right: 20px;
+}
+
+div.yearContainer, div.runtimeContainer {
+display: flex;
+    flex-direction: column;
 }
 
 
@@ -66,7 +76,7 @@ div.webRating {
 div.additionInfo {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     position: relative;
     bottom: 34px;
 }
@@ -76,9 +86,21 @@ width: 90%;
     min-height: 300px;
     background: #252953;
     margin: 10px;
+   
 }
 
+div.reviewInput {
+    width: 90%;
+        min-height: 300px;
+        background: #252953;
+        margin: 10px;
+    
+}
 
+div.userInfo {
+display: flex;
+    flex-direction: inherit;
+}
 svg.css-i4bv87-MuiSvgIcon-root {
     position: relative;
     left: 34px
@@ -104,3 +126,4 @@ div.actors {
     background: #252953;
     margin: 10px;
 }
+

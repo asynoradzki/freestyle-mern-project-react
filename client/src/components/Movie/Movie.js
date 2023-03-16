@@ -2,7 +2,7 @@ import './Movie.css';
 import { Typography, Rating, Box } from '@mui/material'
 import StarIcon from '@mui/icons-material/Star';
 import StarRateIcon from '@mui/icons-material/StarRate';
-import UserReviews from './UserReviews.js'
+import ReviewInput from './ReviewInput.js'
 import { useState } from 'react';
 
 const labels = {
@@ -23,7 +23,7 @@ function getLabelText(value) {
 }
 
 
-function Movie() {
+function Movie({ clickedMovie }) {
     const [value, setValue] = useState(0);
     const [hover, setHover] = useState(-1);
 
@@ -33,10 +33,16 @@ function Movie() {
             <div className='poster'></div>
             <div className='allInfo'>
                 <div className='movieInfo'>
-                    <Typography className="title" variant='overline'>movie.title</Typography>
+                    <Typography className="title" variant='overline'>{clickedMovie.title}</Typography>
                     <div className='additionInfo'>
-                    <Typography className="year" variant='overline'>movie.year</Typography>
-                        <Typography className="runtime" variant='overline'>movie.runtime</Typography>
+                        <div className="yearContainer">
+                            <Typography className="year" variant='overline'>year:</Typography>
+                            <Typography className="yearValue" variant='overline'>{clickedMovie.year}</Typography>
+                        </div>
+                        <div className="runtimeContainer">
+                            <Typography className="runtime" variant='overline'>runtime:</Typography>
+                            <Typography className="runtimeValue" variant='overline'>{clickedMovie.runtime}</Typography>
+                        </div>
                     </div>
                 </div>
                 <div className="rating">
@@ -77,10 +83,9 @@ function Movie() {
             <div className='plot'></div>
             <div className='directors'></div>
             <div className='actors'></div>
-            <div className='reviews'>
-                <UserReviews />
-            </div>
-           
+            <ReviewInput clickedMovie={clickedMovie} />
+
+
 
         </div>
     )
