@@ -45,28 +45,32 @@ function App() {
   // imageUrl, title, genres, runtime
   return (
     <div className="App" style={{ marginRight: isDrawerOpen ? "270px" : 0 }}>
-      <header className="NavBar">
+      <header className="NavBar dark">
         <NavBar disabledButtons={disabledButtons} handleClick={handleClick} />
       </header>
-      {display && (
-        <div className="Main">
-          {filteredFilms.map((film) => (
-            <MovieThumbnail
-              key={film._id}
-              imageUrl={film.imageUrl}
-              title={film.title}
-              genres={film.genres}
+      <div className="MainDisplay dark">
+        
+        {display && (
+          <div className="Main dark">
+            {filteredFilms.map((film) => (
+              <MovieThumbnail
+                key={film._id}
+                imageUrl={film.imageUrl}
+                title={film.title}
+                genres={film.genres}
+                runtime={film.runtime}
+              />
+            ))}
+            <RightDrawer
+              isDrawerOpen={isDrawerOpen}
+              setIsDrawerOpen={setIsDrawerOpen}
+              allFilms={allFilms}
+              filteredFilms={filteredFilms}
+              setFilteredFilms={setFilteredFilms}
             />
-          ))}
-          <RightDrawer
-            isDrawerOpen={isDrawerOpen}
-            setIsDrawerOpen={setIsDrawerOpen}
-            allFilms={allFilms}
-            filteredFilms={filteredFilms}
-            setFilteredFilms={setFilteredFilms}
-          />
-        </div>
-      )}
+          </div>
+        )}
+      </div>
       {create && <Create />}
       {edit && <Edit />}
     </div>

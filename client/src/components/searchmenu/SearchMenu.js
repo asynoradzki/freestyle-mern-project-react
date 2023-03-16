@@ -66,12 +66,12 @@ const SearchMenu = ({ allFilms, setFilteredFilms }) => {
                 />
             </form>
             <div className="FilterButtons">
-                <button className={active === "all" ? "Button active" : "Button dark"} onClick={handleAllClick}>
+                <button className={active === "all" ? "Button active dark" : "Button dark"} onClick={handleAllClick}>
                     all
                 </button>
                 {allGenres.map((genre, index) => (
                     <button
-                        className={active === genre ? "Button active" : "Button dark"}
+                        className={active === genre ? "Button active dark" : "Button dark"}
                         key={index}
                         onClick={() => handleGenreBtnClick(genre)}
                     >
