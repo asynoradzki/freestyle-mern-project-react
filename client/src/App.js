@@ -2,16 +2,28 @@
 import NavBar from './components/navbar/NavBar.js';
 import RightDrawer from './components/rightDrawer/RightDrawer.js';
 import MovieThumbnail from './components/moviethumbnail/MovieThumbnail.js';
-import SearchMenu from './components/searchmenu/SearchMenu.js';
 import Create from './components/create/Create.js'
 import Edit from './components/edit/Edit.js'
 import './App.css';
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
+import Movie from './components/Movie/Movie.js'
+
+export async function fetchData(url, method, data) {
+    const response = await fetch(url, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: data ? JSON.stringify(data) : undefined
+    });
+    const resData = await response.json();
+    return resData;
+}
 
 function App() {
     const [display, setDisplay] = useState(true);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-  const [create, setCreate] = useState(false);
+    const [create, setCreate] = useState(false);
     const [edit, setEdit] = useState(false);
     const [disabledButtons, setDisabledButtons] = useState({
         display: true,
@@ -20,6 +32,7 @@ function App() {
     });
     const [allFilms, setAllFilms] = useState([]);
     const [filteredFilms, setFilteredFilms] = useState([]);
+    const [isMovieThumbnailClicked, setMovieThumbnailClicked] = useState(false)
 
     useEffect(() => {
         getFilms().catch((err) => alert(err.message));
@@ -48,15 +61,15 @@ function App() {
             <header className="NavBar">
                 <NavBar disabledButtons={disabledButtons} handleClick={handleClick} />
             </header>
-            {display && (
+            {!isMovieThumbnailClicked && display && (
                 <div className="Main" >
-                    <MovieThumbnail />
-                    <RightDrawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} allFilms={allFilms} filteredFilms={filteredFilms} setFilteredFilms={setFilteredFilms}  />
-                    
+                    <MovieThumbnail setMovieThumbnailClicked={setMovieThumbnailClicked} />
+                    <RightDrawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} allFilms={allFilms} filteredFilms={filteredFilms} setFilteredFilms={setFilteredFilms} />
                 </div>
             )}
-            {create && <Create />}
-            {edit && <Edit />}
+            {!isMovieThumbnailClicked && create && <Create />}
+            {!isMovieThumbnailClicked && edit && <Edit />}
+            {isMovieThumbnailClicked && <Movie />}
         </div>
     );
 }

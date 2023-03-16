@@ -4,6 +4,8 @@ const cors = require('cors')
 const app = express()
 const mongoDBlink = require('./secret')
 const movieRoutes = require('./routes/movieRoutes')
+const movieRoutes = require('./routes/commentRoutes')
+
 
 app.use(cors())
 app.use(express.json())
@@ -20,3 +22,4 @@ app.use(function(req, res, next) {
 });
 
 app.use('/api/movies', movieRoutes)
+app.use('/api/comments', movieRoutes)

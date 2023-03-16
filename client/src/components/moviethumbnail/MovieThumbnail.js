@@ -1,9 +1,9 @@
 import React from 'react'
 import './MovieThumbnail.css';
-const MovieThumbnail = () => {
+const MovieThumbnail = ({ setMovieThumbnailClicked }) => {
   return (
      <div className='movieThumbnail dark'>
-        <button className='movieThumbnailButton dark'>
+        <button className='movieThumbnailButton dark' >
            <div className='movieListButtonImage dark'>
               {/* <img src={imageUrl} alt={title} /> */}
               <img src={"abc"} alt={"abc"} />
@@ -17,7 +17,14 @@ const MovieThumbnail = () => {
            <div className='movieThumbnailButtonRuntime dark'>
             {/* <p>{`${runtime} minutes`}</p> */} <p>2137 minutes</p>
            </div>
-      </button>
+           
+        </button>
+        <button
+           className='goToMovie'
+           onClick={(e) =>  setMovieThumbnailClicked(true) }
+        >
+           Check more
+        </button>
      </div>
   )
 }

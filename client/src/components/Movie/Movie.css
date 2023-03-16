@@ -1,0 +1,106 @@
+@import url(../../colors.css);
+
+span.title {
+    font-size: 50px;
+}
+
+span.year,
+span.runtime {
+    font-size: small
+}
+
+
+div.movieWeb {
+    width: 90%;
+    min-height: 1500px;
+    margin: 0;
+    padding: 0px;
+    margin: auto;
+    background: #1D2043;
+    border-radius: 6px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+div.poster {
+    width: 90%;
+    min-height: 600px;
+    background: #252953;
+    opacity: 0.95
+}
+
+div.allInfo {
+    width: 90%;
+    min-height: 100px;
+    background: #252953;
+    opacity: 0.95;
+    margin-top: 0;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+div.rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+span.css-iljtu2-MuiRating-root {
+    margin: 10px
+}
+
+
+div.yourRating,
+div.webRating {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px
+}
+
+div.additionInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    bottom: 34px;
+}
+
+div.reviews {
+width: 90%;
+    min-height: 300px;
+    background: #252953;
+    margin: 10px;
+}
+
+
+svg.css-i4bv87-MuiSvgIcon-root {
+    position: relative;
+    left: 34px
+}
+
+div.plot {
+    width: 90%;
+    min-height: 300px;
+    background: #252953;
+    margin: 10px;
+}
+
+div.directors {
+    width: 90%;
+    min-height: 300px;
+    background: #252953;
+    margin: 10px;
+}
+
+div.actors {
+    width: 90%;
+    min-height: 300px;
+    background: #252953;
+    margin: 10px;
+}
