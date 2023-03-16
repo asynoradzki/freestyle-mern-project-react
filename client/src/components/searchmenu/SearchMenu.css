@@ -1,0 +1,53 @@
+@import url(../../colors.css);
+
+.SearchMenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.FilterButtons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+}
+.input {
+        position: relative;
+        margin-top: 5rem;
+        background-color: var(--dark-mode-primary);
+        color: var(--dark-mode-text);
+        border: none;
+        border-radius: 20px;
+        width: 10rem;
+        height: 3rem;
+        font-size: 2rem;
+        text-transform: uppercase;
+}
+
+.input::placeholder {
+    color: var(--dark-mode-text);
+}
+.Button {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: var(--dark-mode-primary);
+    border:  none;
+    border-radius: 20px;
+    height: 2em;
+    width: 10em;
+    cursor: pointer;
+    display: block;
+    margin-top: 1em;
+    color: var(--dark-mode-text);
+    text-transform: uppercase;
+  }
+  .Button:hover {
+    background-color: var(--dark-mode-text);
+    color: var(--dark-mode-primary)
+  }
+
+  .active {
+    background-color: var(--dark-mode-text);
+    color: var(--dark-mode-primary)
+  }

@@ -1,8 +1,9 @@
 import { Drawer, Box, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchMenu from '../searchmenu/SearchMenu.js'
 
 
-function RightDrawer({ isDrawerOpen, setIsDrawerOpen }) {
+function RightDrawer({ isDrawerOpen, setIsDrawerOpen, allFilms, setFilteredFilms }) {
 
   return (
     <div>
@@ -29,6 +30,7 @@ function RightDrawer({ isDrawerOpen, setIsDrawerOpen }) {
           <Typography variant="h6" component="div">
             Side Panel
           </Typography>
+          <SearchMenu allFilms={allFilms} setFilteredFilms={setFilteredFilms} />
         </Box>
       </Drawer>
     </div>

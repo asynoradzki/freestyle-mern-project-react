@@ -6,10 +6,10 @@
     align-items: flex-end;
     width: 300px;
     height: 250px; 
-    border: 1px solid var(--dark-mode-primary);
-    background: var(--dark-mode-primary);;
+    border: 1px solid var(--dark-mode-secondary);
+    background: var(--dark-mode-secondary);;
     border-radius: 20px;
-    margin: 0;
+    margin: 1em;
     padding: 0;
 }
 
@@ -17,7 +17,7 @@
     border: none;
     border-radius: 20px;
     background: none;
-    color: var(--dark-mode-secondary);;
+    color: var(--dark-mode-primary);;
     padding: 0;
 }
 
@@ -38,15 +38,16 @@
 .movieThumbnailButtonName h3 {
     font-size: 1.25em;
     color: var(--dark-mode-text);
-    background-color: var(--dark-mode-secondary);
+    background-color: var(--dark-mode-primary);
     margin: 10px 0 0 0;
-    padding: 0
+    padding: 0;
+    height: 2.5rem;
 }
 
 .movieThumbnailButtonGenre p {
     font-size: 0.95em;
     color: var(--dark-mode-text);
-    background-color: var(--dark-mode-secondary);
+    background-color: var(--dark-mode-primary);
     margin: 10px 0 0 0;
     padding: 0
 }
@@ -54,7 +55,7 @@
 .movieThumbnailButtonRuntime p {
     font-size: 0.95em;
     color: var(--dark-mode-text);
-    background-color: var(--dark-mode-secondary);
+    background-color: var(--dark-mode-primary);
     margin: 10px 0 0 0;
     padding: 0;
     border-bottom-right-radius: 20px;
