@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 const SearchMenu = ({ allFilms, setFilteredFilms }) => {
     const [localFilteredFilms, setLocalFilteredFilms] = useState([]);
     const [inputValue, setInputValue] = useState("");
+    const [active, setActive] = useState("all");
     let allGenres = getFilmGenres(allFilms);
 
     useEffect(() => {
@@ -37,7 +38,8 @@ const SearchMenu = ({ allFilms, setFilteredFilms }) => {
     function handleAllClick() {
         setLocalFilteredFilms(allFilms);
         setFilteredFilms(allFilms);
-        setInputValue("")
+        setInputValue("");
+        setActive("all");
     }
 
     function handleGenreBtnClick(genre) {
@@ -48,17 +50,33 @@ const SearchMenu = ({ allFilms, setFilteredFilms }) => {
         setLocalFilteredFilms(filtered);
         setFilteredFilms(filtered);
         setInputValue("");
+        setActive(genre);
     }
 
     return (
         <div className="SearchMenu">
             <form>
-                <input className="input dark" name="title" type="text" placeholder="Movie title.." value={inputValue} onChange={handleOnchange} />
+                <input
+                    className="input dark"
+                    name="title"
+                    type="text"
+                    placeholder="Movie title.."
+                    value={inputValue}
+                    onChange={handleOnchange}
+                />
             </form>
             <div className="FilterButtons">
-                <button className="Button dark"onClick={handleAllClick}>all</button>
+                <button className={active === "all" ? "Button active" : "Button dark"} onClick={handleAllClick}>
+                    all
+                </button>
                 {allGenres.map((genre, index) => (
-                    <button className="Button dark" key={index} onClick={()=>handleGenreBtnClick(genre)}>{genre}</button>
+                    <button
+                        className={active === genre ? "Button active" : "Button dark"}
+                        key={index}
+                        onClick={() => handleGenreBtnClick(genre)}
+                    >
+                        {genre}
+                    </button>
                 ))}
             </div>
         </div>
