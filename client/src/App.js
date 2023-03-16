@@ -67,51 +67,32 @@ function App() {
       <header className="NavBar dark">
         <NavBar disabledButtons={disabledButtons} handleClick={handleClick} />
       </header>
-      {!isMovieThumbnailClicked && display && (
-        <div className="Main">
-          {filteredFilms.map((film) => (
+       {display && (
+        <div className="Main dark">
+          {isMovieThumbnailClicked && <Movie clickedMovie={clickedMovie} />}
+          {!isMovieThumbnailClicked && filteredFilms.map((film) => (
             <MovieThumbnail
               film={film}
-              key={film._id}
-              imageUrl={film.imageUrl}
-              title={film.title}
-              genres={film.genres}
               setMovieThumbnailClicked={setMovieThumbnailClicked}
               setClickedMovie={setClickedMovie}
             />
           ))}
-          <RightDrawer
+          {!isMovieThumbnailClicked && <RightDrawer
             isDrawerOpen={isDrawerOpen}
             setIsDrawerOpen={setIsDrawerOpen}
             allFilms={allFilms}
             filteredFilms={filteredFilms}
             setFilteredFilms={setFilteredFilms}
-          />
+          />}
         </div>
       )}
       {!isMovieThumbnailClicked && create && <Create />}
       {!isMovieThumbnailClicked && edit && <Edit />}
-      {isMovieThumbnailClicked && <Movie clickedMovie={clickedMovie} />}
-      <div className="MainDisplay dark">
-        {display && (
-          <div className="Main dark">
-            {filteredFilms.map((film) => (
-              <MovieThumbnail
-               film={film}
-              />
-            ))}
-            <RightDrawer
-              isDrawerOpen={isDrawerOpen}
-              setIsDrawerOpen={setIsDrawerOpen}
-              allFilms={allFilms}
-              filteredFilms={filteredFilms}
-              setFilteredFilms={setFilteredFilms}
-            />
-          </div>
-        )}
-        {login && <Login />}
+      {login && <Login />}
+      {!isMovieThumbnailClicked && <div className="MainDisplay dark">
       </div>
-          </div>
+      }
+    </div>
   );
 }
 

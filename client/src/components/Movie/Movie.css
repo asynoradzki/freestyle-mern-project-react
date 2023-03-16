@@ -7,15 +7,16 @@ span.title {
 span.year,
 span.runtime {
     font-size: small;
-        margin: 0 20px;
+    margin: 0 20px;
 }
 
 div.yourRating {
     margin-right: 20px;
 }
 
-div.yearContainer, div.runtimeContainer {
-display: flex;
+div.yearContainer,
+div.runtimeContainer {
+    display: flex;
     flex-direction: column;
 }
 
@@ -82,25 +83,46 @@ div.additionInfo {
 }
 
 div.reviews {
-width: 90%;
+    width: 90%;
     min-height: 300px;
     background: #252953;
     margin: 10px;
-   
+
 }
 
 div.reviewInput {
     width: 90%;
-        min-height: 300px;
-        background: #252953;
-        margin: 10px;
-    
+    min-height: 300px;
+    background: #252953;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+div.allComents {
+    display: flex;
+    flex-direction: column;
+}
+
+div.usersReviews {
+    display: flex;
+    flex-direction: row;
 }
 
 div.userInfo {
-display: flex;
+    display: flex;
     flex-direction: inherit;
+    margin-left: 20px;
+    margin-top: 50px;
+    margin-right: 70px;
 }
+
+h3.name {
+    margin-top: 40px;
+}
+
+
 svg.css-i4bv87-MuiSvgIcon-root {
     position: relative;
     left: 34px
@@ -127,3 +149,24 @@ div.actors {
     margin: 10px;
 }
 
+div.css-1ps6pg7-MuiPaper-root {
+    padding: 40px 20px;
+    margin-left: 18px;
+    margin-top: 10px;
+    width: 90%;
+    background: #9ea2c812;
+    opacity: 0.9
+}
+
+div.movieInfo {
+margin-left: 20px}
+
+form.css-otp49b {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button.css-sghohy-MuiButtonBase-root-MuiButton-root {
+margin: 20px
+}

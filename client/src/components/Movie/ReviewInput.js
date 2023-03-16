@@ -42,7 +42,6 @@ function ReviewInput({ clickedMovie }) {
                 component="form"
                 sx={{
                     '& .MuiTextField-root': { m: 1, width: '60ch' },
-                    border: '1px solid'
                 }}
                 noValidate
                 autoComplete="off"
