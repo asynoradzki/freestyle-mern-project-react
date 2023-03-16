@@ -1,3 +1,5 @@
+@import url(./colors.css);
+
 .App {
   text-align: center;
   align-items: center;
@@ -15,8 +17,8 @@
 }
 
 .NavBar {
-  background-color: #282c34;
-  min-height: 10vh;
+  background-color: var(--dark-mode-primary);
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,6 +47,13 @@
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
+  background-color: var(--dark-mode-background);
+}
+
+.MainDisplay {
+  background-color: var(--dark-mode-background);
+  width: 100vw;
+  height: calc(100vh - 20vh);
 }
 
 svg.css-tzssek-MuiSvgIcon-root {
@@ -52,3 +61,4 @@ svg.css-tzssek-MuiSvgIcon-root {
   right: 20px;
   top: 22px;
 }
+
