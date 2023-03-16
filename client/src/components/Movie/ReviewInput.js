@@ -31,8 +31,8 @@ function ReviewInput({ clickedMovie }) {
     async function handleSubmit(event) {
         event.preventDefault();
         const response = await fetchData(url, "POST", inputData)
-        console.log(response._id)
         await getData();
+        setInputData({ movieTitle: "", userName: "", comment: "" })
     }
 
     return (
