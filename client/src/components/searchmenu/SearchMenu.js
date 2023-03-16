@@ -6,7 +6,7 @@ const SearchMenu = ({ allFilms, setFilteredFilms }) => {
     const [localFilteredFilms, setLocalFilteredFilms] = useState([]);
     const [inputValue, setInputValue] = useState("");
     const [active, setActive] = useState("all");
-    let allGenres = getFilmGenres(allFilms);
+    const allGenres = getFilmGenres(allFilms);
 
     useEffect(() => {
         if (allFilms) {
@@ -55,7 +55,7 @@ const SearchMenu = ({ allFilms, setFilteredFilms }) => {
 
     return (
         <div className="SearchMenu">
-            <form>
+            <form className="SearchField">
                 <input
                     className="input dark"
                     name="title"
