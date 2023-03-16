@@ -97,11 +97,7 @@ function App() {
           <div className="Main dark">
             {filteredFilms.map((film) => (
               <MovieThumbnail
-                key={film._id}
-                imageUrl={film.imageUrl}
-                title={film.title}
-                genres={film.genres}
-                runtime={film.runtime}
+               film={film}
               />
             ))}
             <RightDrawer
@@ -113,8 +109,6 @@ function App() {
             />
           </div>
         )}
-        {edit && <Edit />}
-        {create && <Create />}
         {login && <Login />}
       </div>
           </div>

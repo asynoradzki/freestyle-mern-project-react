@@ -10,7 +10,7 @@ const MovieThumbnail = ({ setMovieThumbnailClicked, film,  setClickedMovie } ) =
   
    return (
      <div className='movieThumbnail dark'>
-        <button className='movieThumbnailButton dark' >
+        <button className='movieThumbnailButton goToMovie dark' onClick={handleClick} >
            <div className='movieListButtonImage dark'>
                <img src={film.imageUrl} alt={film.title} />
            </div>
@@ -25,12 +25,7 @@ const MovieThumbnail = ({ setMovieThumbnailClicked, film,  setClickedMovie } ) =
            </div>
            
         </button>
-        <button
-           className='goToMovie'
-           onClick={handleClick}
-        >
-           Check more
-        </button>
+      
      </div>
   )
 }
