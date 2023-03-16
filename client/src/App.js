@@ -4,6 +4,7 @@ import MovieList from './components/moviethumbnail/MovieThumbnail.js';
 import SearchMenu from './components/rightDrawer/RightDrawer.js';
 import Create from './components/create/Create.js'
 import Edit from './components/edit/Edit.js'
+import Login from './components/login/Login.js'
 import './App.css';
 import {useState} from 'react'
 import MovieThumbnail from './components/moviethumbnail/MovieThumbnail.js';
@@ -13,6 +14,7 @@ function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [create, setCreate] = useState(false)
   const [edit, setEdit] = useState(false)
+  const [login, setLogin] = useState(false)
   const [disabledButtons, setDisabledButtons] = useState({
     display:true,
     create: false,
@@ -23,11 +25,13 @@ function App() {
     setDisabledButtons({
       display: button === 'display',
       create: button === 'create',
-      edit: button === 'edit'
+      edit: button === 'edit',
+      login: button === 'login',
     })
     setDisplay(button === "display")
     setCreate(button === "create")
     setEdit(button === "edit")
+    setLogin(button === "login")
   }
 
 
@@ -48,6 +52,9 @@ function App() {
         )}
         {edit && (
           <Edit />
+        )}
+        {login && (
+          <Login />
         )}
     </div>
   );
