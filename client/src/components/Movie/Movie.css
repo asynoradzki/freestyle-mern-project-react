@@ -150,12 +150,13 @@ div.actors {
 }
 
 div.css-1ps6pg7-MuiPaper-root {
-    padding: 40px 20px;
-    margin-left: 18px;
+padding: 40px 20px;
+    margin-left: 68px;
     margin-top: 10px;
     width: 90%;
     background: #9ea2c812;
-    opacity: 0.9
+    opacity: 0.9;
+    border-radius: 20px;
 }
 
 div.movieInfo {
