@@ -4,6 +4,7 @@ const cors = require('cors')
 const app = express()
 const mongoDBlink = require('./secret')
 const movieRoutes = require('./routes/movieRoutes')
+const commentRoutes = require('./routes/commentRoutes')
 const Login = require('./models/Login.js')
 
 app.use(cors())
@@ -20,6 +21,8 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use('/api/movies', movieRoutes)
+app.use('/api/comments', commentRoutes)
 app.get("/api/users", async (req,res)=> {
   try {
     const data = await Login.find();
@@ -53,6 +56,6 @@ app.post('/api/users', async (req,res) => {
 .catch(error => {
   console.error(error);
 })
- */
+*/
 
 app.use('/api/movies', movieRoutes)

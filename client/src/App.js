@@ -1,12 +1,25 @@
 // importy compomentow do refactoru, niewiem czy destrukturyzacja nie dziala
-import NavBar from "./components/navbar/NavBar.js";
-import RightDrawer from "./components/rightDrawer/RightDrawer.js";
-import MovieThumbnail from "./components/moviethumbnail/MovieThumbnail.js";
-import Create from "./components/create/Create.js";
-import Edit from "./components/edit/Edit.js";
+import NavBar from './components/navbar/NavBar.js';
+import RightDrawer from './components/rightDrawer/RightDrawer.js';
+import MovieThumbnail from './components/moviethumbnail/MovieThumbnail.js';
+import Create from './components/create/Create.js'
+import Edit from './components/edit/Edit.js'
 import Login from "./components/login/Login.js"
-import "./App.css";
-import { useState, useEffect } from "react";
+import './App.css';
+import { useState, useEffect } from 'react'
+import Movie from './components/Movie/Movie.js'
+
+export async function fetchData(url, method, data) {
+  const response = await fetch(url, {
+    method: method,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: data ? JSON.stringify(data) : undefined
+  });
+  const resData = await response.json();
+  return resData;
+}
 
 function App() {
   const [display, setDisplay] = useState(true);
@@ -22,6 +35,8 @@ function App() {
   });
   const [allFilms, setAllFilms] = useState([]);
   const [filteredFilms, setFilteredFilms] = useState([]);
+  const [isMovieThumbnailClicked, setMovieThumbnailClicked] = useState(false)
+  const [clickedMovie, setClickedMovie] = useState(null)
 
   useEffect(() => {
     getFilms().catch((err) => alert(err.message));
@@ -31,7 +46,7 @@ function App() {
     const data = await fetch("http://127.0.0.1:3001/api/movies");
     const films = await data.json();
     setAllFilms(films);
-    // setFilteredFilms(films);
+    setFilteredFilms(films);
   }
 
   const handleClick = (button) => {
@@ -53,33 +68,31 @@ function App() {
       <header className="NavBar dark">
         <NavBar disabledButtons={disabledButtons} handleClick={handleClick} />
       </header>
-      <div className="MainDisplay dark">
-
-        {display && (
-          <div className="Main dark">
-            {filteredFilms.map((film) => (
-              <MovieThumbnail
-                key={film._id}
-                imageUrl={film.imageUrl}
-                title={film.title}
-                genres={film.genres}
-                runtime={film.runtime}
-              />
-            ))}
-            <RightDrawer
-              isDrawerOpen={isDrawerOpen}
-              setIsDrawerOpen={setIsDrawerOpen}
-              allFilms={allFilms}
-              filteredFilms={filteredFilms}
-              setFilteredFilms={setFilteredFilms}
+       {display && (
+        <div className="Main dark">
+          {isMovieThumbnailClicked && <Movie clickedMovie={clickedMovie} />}
+          {!isMovieThumbnailClicked && filteredFilms.map((film) => (
+            <MovieThumbnail
+              film={film}
+              setMovieThumbnailClicked={setMovieThumbnailClicked}
+              setClickedMovie={setClickedMovie}
             />
-          </div>
-        )}
-        {edit && <Edit />}
-        {create && <Create />}
-        {login && <Login />}
+          ))}
+          {!isMovieThumbnailClicked && <RightDrawer
+            isDrawerOpen={isDrawerOpen}
+            setIsDrawerOpen={setIsDrawerOpen}
+            allFilms={allFilms}
+            filteredFilms={filteredFilms}
+            setFilteredFilms={setFilteredFilms}
+          />}
+        </div>
+      )}
+      {!isMovieThumbnailClicked && create && <Create />}
+      {!isMovieThumbnailClicked && edit && <Edit />}
+      {login && <Login />}
+      {!isMovieThumbnailClicked && <div className="MainDisplay dark">
       </div>
-      
+      }
     </div>
   );
 }
