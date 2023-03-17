@@ -9,7 +9,8 @@ import { Divider, Avatar, Grid, Paper } from "@mui/material";
 function UsersReviews({ allComments }) {
 
     return (
-        <div style={{ padding: 14 }} className="allComments">
+        // define class and style below div in css file
+        <div style={{ padding : 14}} className="allComments">
             <h1>Comments</h1>
             {allComments.map(comment => (
                 
