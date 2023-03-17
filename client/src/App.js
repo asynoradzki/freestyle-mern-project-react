@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [display, setDisplay] = useState(true);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(true);
   const [create, setCreate] = useState(false);
   const [edit, setEdit] = useState(false);
   const [login, setLogin] = useState(false)
@@ -45,6 +45,7 @@ function App() {
     setCreate(button === "create");
     setEdit(button === "edit");
     setLogin(button === "login")
+    setIsDrawerOpen(true);
   };
   // imageUrl, title, genres, runtime
   return (

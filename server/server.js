@@ -30,7 +30,6 @@ app.get("/api/users", async (req,res)=> {
 })
 
 app.post('/api/users', async (req,res) => {
-  console.log(req.body);
   const { username, password} = req.body;
   const newUser = new Login({
     username,
