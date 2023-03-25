@@ -1,4 +1,5 @@
 const Comment = require('../models/Comment')
+const handleError = require('./error')
 
 const addComment = async function (req, res) {
     try {
@@ -17,21 +18,11 @@ const addComment = async function (req, res) {
 const getComments = async function (req, res) {
     try {
         const movie = await Comment.findOne({ title: req.params.title });
-       // console.log(movie)
         movie ? res.json(movie.comments) : res.json([])
     }
     catch (error) {
         handleError(error, res)
     }
-}
-
-function handleError(error, res) {
-    res.status(error.status || 500).send({
-        error: {
-            error: error.status || 500,
-            message: error.message || "Internal Server Error"
-        }
-    });
 }
 
 module.exports = {
