@@ -24,7 +24,6 @@ function ReviewInput({ clickedMovie }) {
     async function getData() {
         const response = await fetch(`${url}/${clickedMovie.title}`)
         const responseData = await response.json();
-        console.log(responseData)
         setAllComments(responseData)
     }
 
@@ -32,7 +31,7 @@ function ReviewInput({ clickedMovie }) {
         event.preventDefault();
         const response = await fetchData(url, "POST", inputData)
         await getData();
-        setInputData({ movieTitle: "", userName: "", comment: "" })
+        setInputData({ ...inputData, userName: "", comment: "" })
     }
 
     return (
