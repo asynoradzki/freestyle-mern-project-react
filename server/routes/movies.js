@@ -11,21 +11,4 @@ router.get("/", async (req, res) => {
     }
 })
 
-/* Movie.create({
-  id: 54,
-  title: "TEST",
-  year: 22,
-  runtime: 100,
-  genres: ["comedy", "drama"],
-  director: "AAAAAA",
-  actors: ["Kowalksi", "aaaa" ],
-  plot: "sssssss",
-})
-.then(movie => {
-  console.log(movie);
-})
-.catch(error => {
-  console.error(error);
-}) */
-
 module.exports = router

@@ -27,9 +27,6 @@ router.get('/:title', async (req, res) => {
     }
 })
 
-
-
-
 function handleError(error, res) {
     res.status(error.status || 500).send({
         error: {
