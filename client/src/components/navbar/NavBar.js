@@ -1,5 +1,7 @@
 //import  './navbar.css'
 import React from 'react'
+import './navbar.css';
+
 
 const NavBar = ({disabledButtons, handleClick}) => {
   return (
