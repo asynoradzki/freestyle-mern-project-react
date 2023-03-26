@@ -4,11 +4,9 @@ const handleError = require('./error')
 const addComment = async function (req, res) {
     try {
         const { movieTitle, userName, comment } = req.body;
-        console.log(movieTitle)
         let movie = await Comment.findOne({ title: movieTitle })
         movie ? await movie.comments.push({ userName, comment }) : movie = await new Comment({ title: movieTitle, comments: [{ userName, comment }] })
         await movie.save()
-        console.log(movie)
         await res.json(movie)
     } catch (error) {
         handleError(error, res)
