@@ -5,6 +5,7 @@ import MovieThumbnail from './components/moviethumbnail/MovieThumbnail.js';
 import Create from './components/create/Create.js'
 import Edit from './components/edit/Edit.js'
 import Login from "./components/login/Login.js"
+import HomePage from './Pages/homepage/HomePage.js';
 import './App.css';
 import { useState, useEffect } from 'react'
 import Movie from './components/Movie/Movie.js'
@@ -28,7 +29,7 @@ function App() {
   const [edit, setEdit] = useState(false);
   const [login, setLogin] = useState(false)
   const [disabledButtons, setDisabledButtons] = useState({
-    display: true,
+    display: false,
     create: false,
     edit: false,
     login: false,
@@ -37,6 +38,7 @@ function App() {
   const [filteredFilms, setFilteredFilms] = useState([]);
   const [isMovieThumbnailClicked, setMovieThumbnailClicked] = useState(false)
   const [clickedMovie, setClickedMovie] = useState(null)
+  const [isHomePage, setHomePage] = useState(true)
 
   useEffect(() => {
     getFilms().catch((err) => alert(err.message));
@@ -60,7 +62,11 @@ function App() {
     setCreate(button === "create");
     setEdit(button === "edit");
     setLogin(button === "login")
-    setIsDrawerOpen(true);
+    setIsDrawerOpen(false);
+
+    if (button === "display") {
+      setHomePage(false);
+    }
   };
   // imageUrl, title, genres, runtime
   return (
@@ -68,7 +74,8 @@ function App() {
       <header className="NavBar dark">
         <NavBar disabledButtons={disabledButtons} handleClick={handleClick} />
       </header>
-       {display && (
+      {isHomePage && <HomePage setIsDrawerOpen={setIsDrawerOpen} />}
+      {!isHomePage && display && (
         <div className="Main dark">
           {isMovieThumbnailClicked && <Movie clickedMovie={clickedMovie} />}
           {!isMovieThumbnailClicked && filteredFilms.map((film) => (
@@ -90,9 +97,7 @@ function App() {
       {!isMovieThumbnailClicked && create && <Create />}
       {!isMovieThumbnailClicked && edit && <Edit />}
       {login && <Login />}
-      {!isMovieThumbnailClicked && <div className="MainDisplay dark">
-      </div>
-      }
+      
     </div>
   );
 }

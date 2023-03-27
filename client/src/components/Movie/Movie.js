@@ -66,7 +66,7 @@ function Movie({ clickedMovie }) {
                                 onChangeActive={(event, newHover) => {
                                     setHover(newHover);
                                 }}
-                                emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+                                emptyIcon={<StarIcon className='rating' style={{ opacity: 0.55 }} fontSize="inherit" />}
                             />
                             {value !== null && (
                                 <Box sx={{ ml: 2, margin: '5px' }}>{labels[hover !== -1 ? hover : value]}</Box>
@@ -76,7 +76,7 @@ function Movie({ clickedMovie }) {
 
                     <div className='webRating'>
                         <Typography className="webRating">MovieApp rating</Typography>
-                        <StarRateIcon />
+                        <StarRateIcon className='rating' />
                     </div>
                 </div>
             </div>

@@ -13,8 +13,8 @@
 } */
 
 :root .dark {
-   --dark-mode-background: #1B262C;
-   --dark-mode-primary: #0F4C75;
+   --dark-mode-background: #262932;
+   --dark-mode-primary: #262932;
    --dark-mode-secondary: #3282B8;
    --dark-mode-text: #F7EFE5;
 }

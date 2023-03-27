@@ -1,11 +1,7 @@
-const express = require('express')
-const router = express.Router();
-const Comment = require('../models/Comment.js')
+const Comment = require('../models/Comment')
+const handleError = require('./error')
 
-router.use(express.json())
-router.use(express.urlencoded({ extended: false }))
-
-router.post('/', async (req, res) => {
+const addComment = async function (req, res) {
     try {
         const { movieTitle, userName, comment } = req.body;
         let movie = await Comment.findOne({ title: movieTitle })
@@ -15,9 +11,9 @@ router.post('/', async (req, res) => {
     } catch (error) {
         handleError(error, res)
     }
-})
+}
 
-router.get('/:title', async (req, res) => {
+const getComments = async function (req, res) {
     try {
         const movie = await Comment.findOne({ title: req.params.title });
         movie ? res.json(movie.comments) : res.json([])
@@ -25,19 +21,9 @@ router.get('/:title', async (req, res) => {
     catch (error) {
         handleError(error, res)
     }
-})
-
-
-
-
-function handleError(error, res) {
-    res.status(error.status || 500).send({
-        error: {
-            error: error.status || 500,
-            message: error.message || "Internal Server Error"
-        }
-    });
 }
 
-
-module.exports = router
+module.exports = {
+    addComment,
+    getComments
+}
