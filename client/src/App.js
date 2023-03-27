@@ -5,7 +5,7 @@ import MovieThumbnail from './components/moviethumbnail/MovieThumbnail.js';
 import Create from './components/create/Create.js'
 import Edit from './components/edit/Edit.js'
 import Login from "./components/login/Login.js"
-import HomePage from './Pages/HomePage.js';
+import HomePage from './Pages/homepage/HomePage.js';
 import './App.css';
 import { useState, useEffect } from 'react'
 import Movie from './components/Movie/Movie.js'
@@ -62,7 +62,7 @@ function App() {
     setCreate(button === "create");
     setEdit(button === "edit");
     setLogin(button === "login")
-    setIsDrawerOpen(true);
+    setIsDrawerOpen(false);
 
     if (button === "display") {
       setHomePage(false);
@@ -74,7 +74,7 @@ function App() {
       <header className="NavBar dark">
         <NavBar disabledButtons={disabledButtons} handleClick={handleClick} />
       </header>
-      {isHomePage && <HomePage />}
+      {isHomePage && <HomePage setIsDrawerOpen={setIsDrawerOpen} />}
       {!isHomePage && display && (
         <div className="Main dark">
           {isMovieThumbnailClicked && <Movie clickedMovie={clickedMovie} />}
@@ -97,9 +97,7 @@ function App() {
       {!isMovieThumbnailClicked && create && <Create />}
       {!isMovieThumbnailClicked && edit && <Edit />}
       {login && <Login />}
-      {!isMovieThumbnailClicked && <div className="MainDisplay dark">
-      </div>
-      }
+      
     </div>
   );
 }

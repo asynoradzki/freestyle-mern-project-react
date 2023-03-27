@@ -22,3 +22,8 @@ svg.css-tzssek-MuiSvgIcon-root {
   top: 22px;
 }
 
+
+body {
+  min-height: 100%;
+  background-color: #262932;
+}
