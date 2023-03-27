@@ -1,9 +1,11 @@
 import { Drawer, Box, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchMenu from '../searchmenu/SearchMenu.js'
+import {useState} from "react";
 
 
-function RightDrawer({ isDrawerOpen, setIsDrawerOpen, allFilms, setFilteredFilms }) {
+function RightDrawer({ allFilms, setFilteredFilms }) {
+const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
     <div>
@@ -12,7 +14,8 @@ function RightDrawer({ isDrawerOpen, setIsDrawerOpen, allFilms, setFilteredFilms
         color="neutral"
         edge="start"
         aria-label="logo"
-        onClick={() => setIsDrawerOpen(true)}>
+        onClick={() => setIsDrawerOpen(true)}
+        >
         </MenuIcon>
       <Drawer
         anchor="right"
@@ -30,7 +33,7 @@ function RightDrawer({ isDrawerOpen, setIsDrawerOpen, allFilms, setFilteredFilms
           <Typography variant="h6" component="div">
             Side Panel
           </Typography>
-          <SearchMenu allFilms={allFilms} setFilteredFilms={setFilteredFilms} />
+          {/* <SearchMenu allFilms={allFilms} setFilteredFilms={setFilteredFilms} /> */}
         </Box>
       </Drawer>
     </div>

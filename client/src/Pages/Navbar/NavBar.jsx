@@ -9,22 +9,13 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import AdbIcon from '@mui/icons-material/Adb';
+import {Outlet, Link} from "react-router-dom";
 
 //UWAGA! nienaprawione funkcje przenoszenia do innych stron
 
 
-const NavBar = ({ disabledButtons, handleClick }) => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+const NavBar = () => {
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
- 
     return (
       <AppBar position="static">
         <Container maxWidth="xl">
@@ -55,7 +46,6 @@ const NavBar = ({ disabledButtons, handleClick }) => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleOpenNavMenu}
                 color="inherit"
               >
                
@@ -81,48 +71,33 @@ const NavBar = ({ disabledButtons, handleClick }) => {
               LOGO
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button
-                key="home"
-                onClick={() => handleClick("display")}
-                sx={{ my: 2, color: 'white', display: 'block', fontSize: 'large' }}
-              >
-                HOME
-              </Button>
-              <Button
-                key="movies"
-                onClick={() => handleClick("display")}
-                sx={{ my: 2, color: 'white', display: 'block', fontSize: 'large' }}
-              >
-                MOVIES
-              </Button>
-              <Button
-                key="series"
-                onClick={() => handleClick("display")}
-                sx={{ my: 2, color: 'white', display: 'block', fontSize: 'large' }}
-              >
-                SERIES
-              </Button>
+              <Link to="/">
+                <Button
+                  key="home"
+                  sx={{ my: 2, color: 'white', display: 'block', fontSize: 'large' }}
+                >
+                  HOME
+                </Button>
+              </Link>
+              <Link to='/movies'>
+                <Button
+                  key="movies"
+                  sx={{ my: 2, color: 'white', display: 'block', fontSize: 'large' }}
+                >
+                  MOVIES
+                </Button>
+              </Link>
             </Box>
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            <IconButton sx={{ p: 0 }}>
               <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
             </IconButton>
           </Toolbar>
         </Container>
+        <Outlet />
       </AppBar>
    
     );
   }
-
-
-  
-  /*  <nav>
-      <button onClick={()=> handleClick("display")} disabled={disabledButtons.display}>Display Movies</button>
-      <button onClick={()=> handleClick("create")} disabled={disabledButtons.create} >Create New</button>
-      <button onClick={()=> handleClick("edit")} disabled={disabledButtons.edit}>Edit</button>
-      <button disabled>DarkTheme</button>
-      <button onClick={()=> handleClick("login")} disabled={disabledButtons.login}>Login/Sign-in</button>
-      
-    </nav> */
 
 export default NavBar;
 

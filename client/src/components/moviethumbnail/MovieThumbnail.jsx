@@ -1,16 +1,12 @@
 import React from 'react'
 import './MovieThumbnail.css';
+
 const MovieThumbnail = ({ setMovieThumbnailClicked, film,  setClickedMovie } ) => {
   
-   function handleClick() {
-      setMovieThumbnailClicked(true)
-      setClickedMovie(film)
-      
-   }
   
    return (
      <div className='movieThumbnail dark'>
-        <button className='movieThumbnailButton goToMovie dark' onClick={handleClick} >
+        <button className='movieThumbnailButton goToMovie dark' >
            <div className='movieListButtonImage dark'>
                <img src={film.imageUrl} alt={film.title} />
            </div>

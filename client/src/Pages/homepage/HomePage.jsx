@@ -1,14 +1,9 @@
-import React, { useEffect } from 'react'
-import './homepage.css'
+import './Homepage.css'
 import { Carousel } from 'react-bootstrap'
 import CarouselImage from '../../components/carouselImage/CarouselImage';
 
 
-const HomePage = ({ setIsDrawerOpen }) => {
-
-    useEffect(() => {
-        setIsDrawerOpen(false)
-    }, [])
+const HomePage = () => {
 
 //do rozwazenia <Carousel fade> 
     return (
@@ -21,7 +16,7 @@ const HomePage = ({ setIsDrawerOpen }) => {
                     <CarouselImage />
                 </Carousel.Item>
                 <Carousel.Item interval={8000}>
-                    <CarouselImage />x
+                    <CarouselImage />
                 </Carousel.Item>
             </Carousel>
         </div>)
