@@ -1,13 +1,5 @@
 @import url(../../colors.css);
 
-/* div.mainPhotos {
-background-color: #093dd9;
-position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 90%;
-} */
 
 div.homepage {
     background-color: #262932;
@@ -20,8 +12,6 @@ div.homepage {
     height: 80vh;
     background-color: #262932;;
 }
-
-
 
 .carousel-item::before {
     content: "";
