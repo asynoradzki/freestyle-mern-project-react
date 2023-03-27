@@ -33,7 +33,7 @@ const [isDrawerOpen, setIsDrawerOpen] = useState(false);
           <Typography variant="h6" component="div">
             Side Panel
           </Typography>
-          {/* <SearchMenu allFilms={allFilms} setFilteredFilms={setFilteredFilms} /> */}
+          <SearchMenu allFilms={allFilms} setFilteredFilms={setFilteredFilms} />
         </Box>
       </Drawer>
     </div>
