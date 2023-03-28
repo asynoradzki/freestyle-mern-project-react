@@ -1,15 +1,6 @@
 @import url(./colors.css);
 
 
-.Main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background-color: var(--dark-mode-background);
-}
-
 .MainDisplay {
   background-color: var(--dark-mode-background);
   width: 100vw;

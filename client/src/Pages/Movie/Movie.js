@@ -2,8 +2,9 @@ import './Movie.css';
 import { Typography, Rating, Box } from '@mui/material'
 import StarIcon from '@mui/icons-material/Star';
 import StarRateIcon from '@mui/icons-material/StarRate';
-import ReviewInput from './ReviewInput.js'
-import { useState } from 'react';
+import ReviewInput from '../../components/ReviewInput/ReviewInput'
+import { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 
 const labels = {
     0.5: 'Useless',
@@ -22,10 +23,23 @@ function getLabelText(value) {
     return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
 }
 
+async function fetchMovie(id) {
+    const movie = await fetch(`http://127.0.0.1:3001/api/movies/${id}`);
+    return await movie.json();
+}
 
-function Movie({ clickedMovie }) {
+// function Movie({ clickedMovie }) {
+function Movie() {
     const [value, setValue] = useState(0);
     const [hover, setHover] = useState(-1);
+    const [clickedMovie, setClickedMovie] = useState({});
+    const { id } = useParams();
+
+    useEffect(() => {
+        fetchMovie(id).then((movie) => {
+            setClickedMovie(movie);
+        }).catch((error) => console.error(error));
+    }, [id])
 
     return (
 
@@ -83,7 +97,7 @@ function Movie({ clickedMovie }) {
             <div className='plot'></div>
             <div className='directors'></div>
             <div className='actors'></div>
-            <ReviewInput clickedMovie={clickedMovie} />
+            {/* <ReviewInput clickedMovie={clickedMovie} /> */}
 
 
 
