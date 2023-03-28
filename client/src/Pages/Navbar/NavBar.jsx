@@ -11,9 +11,6 @@ import Button from '@mui/material/Button';
 import AdbIcon from '@mui/icons-material/Adb';
 import {Outlet, Link} from "react-router-dom";
 
-//UWAGA! nienaprawione funkcje przenoszenia do innych stron
-
-
 const NavBar = () => {
 
     return (
@@ -85,6 +82,14 @@ const NavBar = () => {
                   sx={{ my: 2, color: 'white', display: 'block', fontSize: 'large' }}
                 >
                   MOVIES
+                </Button>
+              </Link>
+              <Link to='/login'>
+                <Button
+                  key="login"
+                  sx={{ my: 2, color: 'white', display: 'block', fontSize: 'large' }}
+                >
+                  LOGIN
                 </Button>
               </Link>
             </Box>

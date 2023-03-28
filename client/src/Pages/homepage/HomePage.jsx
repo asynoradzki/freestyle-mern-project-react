@@ -1,14 +1,12 @@
-import './Homepage.css'
-import { Carousel } from 'react-bootstrap'
-import CarouselImage from '../../components/carouselImage/CarouselImage';
-
+import "./Homepage.css";
+import { Carousel } from "react-bootstrap";
+import CarouselImage from "../../components/carouselImage/CarouselImage";
 
 const HomePage = () => {
-
-//do rozwazenia <Carousel fade> 
+    //do rozwazenia <Carousel fade>
     return (
-        <div className='homepage'>
-            <Carousel> 
+        <div className="homepage">
+            <Carousel>
                 <Carousel.Item interval={8000}>
                     <CarouselImage />
                 </Carousel.Item>
@@ -19,8 +17,8 @@ const HomePage = () => {
                     <CarouselImage />
                 </Carousel.Item>
             </Carousel>
-        </div>)
-}
+        </div>
+    );
+};
 
-
-export default HomePage
+export default HomePage;
