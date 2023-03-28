@@ -37,7 +37,7 @@ function Movie() {
 
     useEffect(() => {
         fetchMovie(id).then((movie) => {
-            setClickedMovie(movie);
+            setClickedMovie(movie[0]);
         }).catch((error) => console.error(error));
     }, [id])
 
@@ -97,7 +97,7 @@ function Movie() {
             <div className='plot'></div>
             <div className='directors'></div>
             <div className='actors'></div>
-            {/* <ReviewInput clickedMovie={clickedMovie} /> */}
+            <ReviewInput clickedMovie={clickedMovie} />
 
 
 
