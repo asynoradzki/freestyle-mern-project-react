@@ -1,6 +1,6 @@
 import { Drawer, Box, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchMenu from '../searchmenu/SearchMenu.js'
+import SearchMenu from '../searchmenu/SearchMenu'
 import {useState} from "react";
 
 

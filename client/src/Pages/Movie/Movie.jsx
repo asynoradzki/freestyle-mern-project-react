@@ -28,7 +28,6 @@ async function fetchMovie(id) {
     return await movie.json();
 }
 
-// function Movie({ clickedMovie }) {
 function Movie() {
     const [value, setValue] = useState(0);
     const [hover, setHover] = useState(-1);
