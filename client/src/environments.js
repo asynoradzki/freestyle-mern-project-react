@@ -1,4 +1,3 @@
-
 export async function fetchData(url, method, data) {
     const response = await fetch(url, {
         method: method,

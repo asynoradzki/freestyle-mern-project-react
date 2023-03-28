@@ -1,6 +1,7 @@
 import "./Login.css";
 import React from "react";
 import ReactSignupLoginComponent from "react-signup-login-component";
+import { fetchData } from '../../environments'
 
 const headers = { "Content-Type": "application/json" };
 const url = `http://localhost:3001`;
@@ -35,16 +36,16 @@ const Login = () => {
 
     const loginWasClickedCallback = async (data) => {
         try {
-            const response = await fetch(`${url}/api/users`);
-            const users = await response.json();
-            console.log(users);
-            const user = users.find((user) => user.username === data.username && user.password === data.password);
-            if (user) {
-                console.log("User logged in successfully!");
-                alert("User logged in successfully!");
+            const response = await fetchData(`${url}/api/users`, "POST", data)
+            if (response.token) {
+                localStorage.setItem('token', response.token);
+                console.log('User logged in successfully!');
+                alert("You have successfully logged in! Let's explore the movie universe. You can now browse movies and add them to your favorites list.");
+                /* const token = localStorage.getItem("token");
+                console.log(token); */
             } else {
-                console.log("Invalid username or password.");
-                alert("Invalid username or password.");
+                alert('Invalid username or password.')
+                console.log('Invalid username or password.');
             }
         } catch (err) {
             console.log(err);
@@ -53,7 +54,7 @@ const Login = () => {
 
     const recoverPasswordWasClickedCallback = async (data) => {
         try {
-          //todo crate/api/login post endpoint and check if certain user exists on backend side
+            //todo crate/api/login post endpoint and check if certain user exists on backend side
             const response = await fetch(`${url}/api/users`);
             const users = await response.json();
             const user = users.find((user) => user.username === data.username);

@@ -3,6 +3,7 @@ const router = express.Router();
 const Login = require('../models/Login.js')
 const usersControllers = require('../controllers/users')
 const handleError = require('../error.js')
+const jwt = require('jsonwebtoken')
 
 router.get("/", async (req, res) => {
     try {
@@ -16,16 +17,24 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    const { username, password } = req.body;
-    const newUser = new Login({
-        username,
-        password,
-    });
     try {
-        const data = await newUser.save();
-        res.json(data);
+        const { username, password } = req.body;
+        if (!username || !password) {
+            return res.status(400).json({ message: 'Please provide username and password' })
+        }
+        const user = await Login.findOne({ username }).select('+password')
+        if (!user || !(await user.correctPassword(password, user.password))) {
+            return res.status(401).json({ message: 'Incorrect username or password' })
+        }
+        const token = jwt.sign({ id: user._id }, process.env.ACCES_TOKEN_SECRET, {
+            expiresIn: process.env.JWT_EXPIRES_IN
+        })
+        res.status(200).json({
+            status: "success",
+            token,
+        })
     } catch (err) {
-        handleError(error, res)
+        handleError(err, res)
 
     }
 });

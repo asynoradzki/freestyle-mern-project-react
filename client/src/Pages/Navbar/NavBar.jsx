@@ -9,7 +9,8 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import AdbIcon from '@mui/icons-material/Adb';
-import {Outlet, Link} from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
+
 
 const NavBar = () => {
 
