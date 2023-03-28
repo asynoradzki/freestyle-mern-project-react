@@ -2,13 +2,16 @@ const express = require('express')
 const router = express.Router();
 const Login = require('../models/Login.js')
 const usersControllers = require('../controllers/users')
+const handleError = require('../error.js')
 
 router.get("/", async (req, res) => {
     try {
         const data = await Login.find();
+        console.log(data)
         res.json(data);
     } catch (error) {
-        res.status(500).json({ success: false });
+        handleError(error, res)
+
     }
 });
 
@@ -22,7 +25,8 @@ router.post("/", async (req, res) => {
         const data = await newUser.save();
         res.json(data);
     } catch (err) {
-        res.status(400).json({ success: false });
+        handleError(error, res)
+
     }
 });
 module.exports = router

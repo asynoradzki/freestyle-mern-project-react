@@ -1,5 +1,5 @@
 const Login = require('../models/Login')
-const handleError = require('./error')
+const handleError = require('../error')
 
 const getUsers = async function (res, req) {
     try {
