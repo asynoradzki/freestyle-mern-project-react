@@ -43,7 +43,9 @@ function Movie() {
     return (
 
         <div className="movieWeb">
-            <div className='poster'></div>
+            <div className='poster'>
+                <img src={clickedMovie.url} alt={clickedMovie.title} />
+            </div>
             <div className='allInfo'>
                 <div className='movieInfo'>
                     <Typography className="title" variant='overline'>{clickedMovie.title}</Typography>
