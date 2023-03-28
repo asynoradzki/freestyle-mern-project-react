@@ -11,7 +11,7 @@ const navigate = useNavigate();
                onClick={() => navigate(`/movies/${film._id}`)}
             >
                <div className='movieListButtonImage dark'>
-                     <img src={film.imageUrl} alt={film.title} />
+                     <img src={film.url} alt={film.title} />
                </div>
                <div className='movieThumbnailButtonName dark'>
                      <h3>{film.title}</h3> 
