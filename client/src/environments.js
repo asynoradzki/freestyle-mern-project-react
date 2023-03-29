@@ -13,7 +13,9 @@ export async function fetchData(url, method, data) {
 
 export async function fetchDataWithAuth(url, method, data) {
     const token = localStorage.getItem('token');
-
+    if (!token) {
+        return
+    }
     const response = await fetch(url, {
         method: method,
         headers: {
@@ -24,4 +26,10 @@ export async function fetchDataWithAuth(url, method, data) {
     });
     const resData = await response.json();
     return resData;
+}
+
+export function getToken() {
+    const token = localStorage.getItem('token');
+    return token ? token : null
+ 
 }
