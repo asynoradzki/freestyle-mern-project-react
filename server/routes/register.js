@@ -18,6 +18,7 @@ router.post("/", async (req, res) => {
             username,
             password,
         });
+        // console.log(newUser);
 
         const token = jwt.sign({ id: newUser._id }, process.env.ACCES_TOKEN_SECRET, {
             expiresIn: process.env.JWT_EXPIRES_IN,
