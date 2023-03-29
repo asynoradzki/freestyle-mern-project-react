@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const Login = require('../models/Login.js')
+const jwt = require('jsonwebtoken')
 
 
 router.post("/", async (req, res) => {
@@ -18,8 +19,16 @@ router.post("/", async (req, res) => {
             password,
         });
 
+        const token = jwt.sign({ id: newUser._id }, process.env.ACCES_TOKEN_SECRET, {
+            expiresIn: process.env.JWT_EXPIRES_IN
+        })
+
         const data = await newUser.save();
-        res.json(data);
+        res.status(201).json({
+            status: 'success',
+            token,
+            data,
+        });
     } catch (err) {
         res.status(403).json({ success: false });
     }
