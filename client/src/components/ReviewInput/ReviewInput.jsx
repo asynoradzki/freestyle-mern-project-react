@@ -4,7 +4,7 @@ import { Box, Button, InputAdornment, TextField } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import SendIcon from '@mui/icons-material/Send';
 import { useState, useEffect } from 'react';
-import { fetchData } from '../../environments';
+import { fetchData, fetchDataWithAuth } from '../../environments';
 
 const url = 'http://127.0.0.1:3001/api/comments'
 
@@ -28,7 +28,7 @@ function ReviewInput({ clickedMovie }) {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const response = await fetchData(url, "POST", inputData)
+        const response = await fetchDataWithAuth(url, "POST", inputData)
         await getData();
         setInputData({ ...inputData, userName: "", comment: "" })
     }
