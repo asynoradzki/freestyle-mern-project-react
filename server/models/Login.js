@@ -11,8 +11,8 @@
       type: String,
       required: [true, 'Please provide your password'],
       selected:false
-    }
-    
+    },
+    watchlist: [String],
   });
 
   loginSchema.pre('save', async function (next) {

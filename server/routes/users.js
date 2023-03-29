@@ -1,9 +1,7 @@
-const express = require('express')
+const express = require("express");
 const router = express.Router();
-const Login = require('../models/Login.js')
-const usersControllers = require('../controllers/users')
-const handleError = require('../error.js')
-const jwt = require('jsonwebtoken')
+const Login = require("../models/Login.js");
+const usersControllers = require('../controllers/users');
 
 router.get("/", async (req, res) => {
     try {
@@ -40,4 +38,8 @@ router.post("/", async (req, res) => {
     }
 });
 
-module.exports = router
+router.patch("/add/:userName", usersControllers.addToWatchlist);
+router.patch("/del/:userName", usersControllers.deleteFromWatchlist);
+
+
+module.exports = router;
