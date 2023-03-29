@@ -7,9 +7,6 @@ import { useContext, useState } from 'react'
 import UserContext from '../../authHelpers/UserContext'
 import { getToken } from '../../environments';
 
-const settings = ['Dashboard', 'Logout'];
-
-
 const logoutUser = () => {
   localStorage.removeItem('token');
   window.location.reload();
