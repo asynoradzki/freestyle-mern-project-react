@@ -93,7 +93,7 @@ const NavBar = () => {
               </Button>
             </Link>
           </Box>
-          {getToken ?
+          {getToken() ?
             (<>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
