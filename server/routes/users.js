@@ -32,10 +32,12 @@ router.post("/", async (req, res) => {
         res.status(200).json({
             status: "success",
             token,
+            user,
         })
     } catch (err) {
         handleError(err, res)
 
     }
 });
+
 module.exports = router

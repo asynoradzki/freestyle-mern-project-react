@@ -1,12 +1,16 @@
 import "./Login.css";
-import React from "react";
+import { useContext } from "react";
 import ReactSignupLoginComponent from "react-signup-login-component";
 import { fetchData } from '../../environments'
+import UserContext from '../../authHelpers/UserContext'
 
 const headers = { "Content-Type": "application/json" };
 const url = `http://localhost:3001`;
 
 const Login = () => {
+    const { setLoggedUser } = useContext(UserContext)
+   
+
     const signupWasClickedCallback = async (data) => {
         const { username, password, passwordConfirmation } = data;
         if (!username || !password || !passwordConfirmation) {
@@ -39,10 +43,16 @@ const Login = () => {
             const response = await fetchData(`${url}/api/users`, "POST", data)
             if (response.token) {
                 localStorage.setItem('token', response.token);
+                console.log(response)
+                setLoggedUser(response.user)
+                window.location.reload();
                 console.log('User logged in successfully!');
                 alert("You have successfully logged in! Let's explore the movie universe. You can now browse movies and add them to your favorites list.");
                 /* const token = localStorage.getItem("token");
                 console.log(token); */
+                //setLoggedUser(response.token)
+                
+                
             } else {
                 alert('Invalid username or password.')
                 console.log('Invalid username or password.');

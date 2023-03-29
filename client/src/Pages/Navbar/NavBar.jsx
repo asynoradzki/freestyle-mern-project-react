@@ -12,7 +12,14 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { Outlet, Link } from "react-router-dom";
 
 
+
+const logoutUser = () => {
+  localStorage.removeItem('token');
+  window.location.reload();
+};
+
 const NavBar = () => {
+
 
     return (
       <AppBar position="static">
@@ -35,7 +42,7 @@ const NavBar = () => {
                 textDecoration: 'none',
               }}
             >
-              MOVIEWEB
+             
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -89,8 +96,9 @@ const NavBar = () => {
                 <Button
                   key="login"
                   sx={{ my: 2, color: 'white', display: 'block', fontSize: 'large' }}
+                  
                 >
-                  LOGIN
+                  {localStorage.getItem('token') ? "" : "LOG IN"}
                 </Button>
               </Link>
             </Box>
