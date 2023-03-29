@@ -1,8 +1,8 @@
-const express = require('express')
+const express = require("express");
 const router = express.Router();
-const Login = require('../models/Login.js')
-const jwt = require('jsonwebtoken')
-
+const Login = require("../models/Login.js");
+const jwt = require("jsonwebtoken");
+const handleError = require("../error");
 
 router.post("/", async (req, res) => {
     try {
@@ -20,19 +20,18 @@ router.post("/", async (req, res) => {
         });
 
         const token = jwt.sign({ id: newUser._id }, process.env.ACCES_TOKEN_SECRET, {
-            expiresIn: process.env.JWT_EXPIRES_IN
-        })
+            expiresIn: process.env.JWT_EXPIRES_IN,
+        });
 
         const data = await newUser.save();
         res.status(201).json({
-            status: 'success',
+            status: "success",
             token,
             data,
         });
     } catch (err) {
-        res.status(403).json({ success: false });
+        handleError(err, res);
     }
 });
 
-
-module.exports = router
+module.exports = router;
