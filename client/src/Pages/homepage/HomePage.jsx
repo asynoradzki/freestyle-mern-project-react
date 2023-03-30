@@ -4,12 +4,17 @@ import { Carousel } from 'react-bootstrap'
 import CarouselImage from '../../components/carouselImage/CarouselImage';
 import MoviesSlider from '../../components/MoviesSlider/MoviesSlider';
 import MiniMovie from '../../components/MiniMovie/MiniMovie';
+import { Typography } from '@mui/material';
+
 
 const HomePage = () => {
+   
+
+
     //do rozwazenia <Carousel fade>
     return (
         <div className='homepage'>
-           
+
             <Carousel>
                 <Carousel.Item interval={8000}>
                     <CarouselImage />
@@ -20,59 +25,67 @@ const HomePage = () => {
                 <Carousel.Item interval={8000}>
                     <CarouselImage />
                 </Carousel.Item>
-            </Carousel> 
-           
-            
+            </Carousel>
             <div className='moviesLists'>
-                <MoviesSlider
-                    title="PLAYING NOW"
-                    slideToShow={4}
-                    width="400px"
-                    widthHover="420px"
-                    height="500px"
-                    heightHover="520px"
-                   
-                />
-            </div> 
+                <div className='playingNow'>
+                    <MoviesSlider
+                        title="PLAYING NOW"
+                        slideToShow={5}
+                        width="370px"
+                        widthHover="390px"
+                        height="480px"
+                        heightHover="500px"
+
+                    />
+                </div>
 
                 <div className='popularList'>
                     <MoviesSlider
                         title="CULT FAVORITES"
-                        slideToShow={3}
-                        width="500px"
-                        widthHover="520px"
-                        height="300px"
-                    heightHover="320px"
+                        slideToShow={4}
+                        width="480px"
+                        widthHover="500px"
+                        height="290px"
+                        heightHover="310px"
                     />
                 </div>
-                <div className='topRatedList'>
-                    <MoviesSlider
-                        title="ACTION-PACKED"
-                        slideToShow={5}
-                        width="200px"
-                        widthHover="210px"
-                        height="250px"
-                        heightHover="260px" />
+                <div className='actionBox'>
+                    <div className='actionTitle'>
+                        <Typography variant='h2' sx={{ fontFamily: 'poppins', margin: '7px' }}>ACTION-PACKED</Typography>
+                    </div>
+
+                    <div className='actionPacked'>
+                        <MoviesSlider
+                            slideToShow={5}
+                            width="240px"
+                            widthHover="260px"
+                            height="310px"
+                            heightHover="330px" />
+                    </div>
                 </div>
-                <div className='actionMoviesList'>
-                    <MoviesSlider
-                        title="LAUGH-OUT-LOUD"
-                        slideToShow={6}
-                        width="200px"
-                        widthHover="210px"
-                        height="250px"
-                        heightHover="260px" />
+                <div className='laughOutLoudBox'>
+                    <div className='laughOutLoudTitle'>
+                        <Typography variant='h2' sx={{ fontFamily: 'poppins', margin: '7px' }}>LAUGH OUT LOUD</Typography>
+                    </div>
+                    <div className='laughOutLoud'>
+                        <MoviesSlider
+                            slideToShow={5}
+                            width="240px"
+                            widthHover="260px"
+                            height="310px"
+                            heightHover="330px" />
+                    </div>
                 </div>
                 <div className='dramaMoviesList'>
                     <MoviesSlider
                         title="HISTORICAL EPICS"
                         slideToShow={3}
-                        width="400px"
-                        widthHover="420px"
-                        height="500px"
-                        heightHover="520px" />
-                </div> 
-          
+                        width="520px"
+                        widthHover="540px"
+                        height="600px"
+                        heightHover="620px" />
+                </div>
+            </div>
         </div >
     )
 }

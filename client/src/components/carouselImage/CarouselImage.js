@@ -6,9 +6,9 @@ import Button from '@mui/material/Button';
 
 const CarouselImage = () => {
   return (
-    <div>
+    <div className='carouselImage'>
       <img
-        className="d-block w-100"
+        className="carouselImage"
         src="https://fwcdn.pl/webv/02/03/60203/60203.4.jpg"
         alt="First slide"
       />

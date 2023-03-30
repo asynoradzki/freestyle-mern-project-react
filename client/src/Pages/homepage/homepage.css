@@ -14,7 +14,7 @@ div.homepage {
     background-color: #262932;;
 }
 
-.carousel-item::before {
+/* .carousel-item::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -26,7 +26,7 @@ div.homepage {
     z-index: 1;
     transition: opacity 0.5s ease-in-out;
 }
-
+ */
 .moviesListst {
 margin-top: 24vh;
     display: flex;

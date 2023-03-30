@@ -17,7 +17,7 @@ const MoviesSlider = ({ title, slideToShow, width, widthHover, height, heightHov
 //map???
     return (
         <>
-            <Typography variant='h1'>
+           <Typography variant='h5' sx={{ fontFamily: 'poppins', margin: '7px' }}>
                 {title}
             </Typography>
             <Slider {...settings}>

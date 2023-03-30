@@ -22,6 +22,18 @@ const MiniMovie = ({ width, widthHover, height, heightHover }) => {
                         height: "100%",
                         objectFit: "cover",
                         filter: hover ? 'blur(2px)' : 'none',
+                        border: hover ? '2.5px solid red' : "1px solid #232531",
+                        '&::before': {
+                            content: '""',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            zIndex: 1,
+                            background: `linear-gradient(to bottom, rgba(0,0,0,0) 30%, #1d1e21 100%)`,
+                        },
+                        
                     }}
                     image="https://fwcdn.pl/webv/02/03/60203/60203.4.jpg" title="movie" />
 

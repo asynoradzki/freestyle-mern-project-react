@@ -14,9 +14,12 @@
      background-color: rgba(255, 255, 255, 0.216);
      text-align: justify;
      padding: 5%;
+     max-height: 40%;
+     overflow: hidden;
  }
 
  p.description {
      color: white;
      opacity: 1
  }
+
