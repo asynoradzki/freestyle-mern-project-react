@@ -8,7 +8,6 @@ const jwt = require('jsonwebtoken')
 router.get("/", async (req, res) => {
     try {
         const data = await Login.find();
-        // console.log(data)
         res.json(data);
     } catch (error) {
         handleError(error, res)
@@ -38,6 +37,7 @@ router.post("/", async (req, res) => {
 
     }
 });
+
 
 router.patch("/add/:userName", usersControllers.addToWatchlist);
 router.patch("/del/:userName", usersControllers.deleteFromWatchlist);

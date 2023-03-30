@@ -2,21 +2,25 @@ import './carouselImage.css'
 import { Carousel } from 'react-bootstrap'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import Button from '@mui/material/Button';
+import { useEffect } from 'react'
 
 
-const CarouselImage = () => {
+
+const CarouselImage = ({ movie }) => {
+const { url, title, runtime, year, genres} = movie
+
   return (
     <div className='carouselImage'>
       <img
         className="carouselImage"
-        src="https://fwcdn.pl/webv/02/03/60203/60203.4.jpg"
+        src={url}
         alt="First slide"
       />
       <Carousel.Caption>
-        <h3 className='title'>The Batman</h3>
-        <p className='rating'>8.9 240 votes</p>
-        <p className='runtime'>280 min</p>
-        <p className='releaseDate' >Release date: March 04, 2022</p>
+        <h3 className='title'>{title}</h3>
+        <p className='genre'>{genres.join(', ')}</p>
+        <p className='runtime'>{runtime} min</p>
+        <p className='releaseDate' >Release year: {year}</p>
         <Button variant="outlined" size="xx-large" className='watchlist'
           sx={{ color: "white", fontSize: '20px', fontFamily: "poppins", fontWeight: "bold", "&:focus": {
       outline: "2px solid white",

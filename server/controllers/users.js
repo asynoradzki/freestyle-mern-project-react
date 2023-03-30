@@ -1,14 +1,14 @@
 const Login = require('../models/Login')
 const handleError = require('../error')
 
-const getUsers = async function (res, req) {
+const getUsers = async (req, res) => {
     try {
         const data = await Login.find();
         res.json(data);
     } catch (error) {
-        res.status(500).json({ success: false });
+        handleError(error, res)
     }
-}
+});
 
 const signInUser = async function (res, req) {
     const { username, password } = req.body;
@@ -50,5 +50,7 @@ const getMovieIds = async function(req, res) {
         res.status(500).json({ success: false });
     }
 }
+
+
 
 module.exports = { getUsers, signInUser, addToWatchlist, deleteFromWatchlist, getMovieIds }

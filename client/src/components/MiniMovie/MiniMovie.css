@@ -19,7 +19,11 @@
  }
 
  p.description {
-     color: white;
+     color: rgb(4, 4, 4);
+     font-weight: 500;
+     font-size: large;
      opacity: 1
  }
 
+.css-1xjenom-MuiPaper-root-MuiCard-root {
+background-color: black;}

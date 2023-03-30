@@ -3,28 +3,43 @@ import './homepage.css'
 import { Carousel } from 'react-bootstrap'
 import CarouselImage from '../../components/carouselImage/CarouselImage';
 import MoviesSlider from '../../components/MoviesSlider/MoviesSlider';
-import MiniMovie from '../../components/MiniMovie/MiniMovie';
 import { Typography } from '@mui/material';
+import { useState } from 'react'
 
 
 const HomePage = () => {
-   
+    const [allFilms, setAllFilms] = useState([]);
+
+    useEffect(() => {
+        getFilms().catch((err) => alert(err.message));
+    }, []);
+
+    async function getFilms() {
+        const data = await fetch("http://127.0.0.1:3001/api/movies");
+        const films = await data.json();
+        setAllFilms(films);
+    }
+
+    function findPlayingNow() {
+        return [...allFilms].sort((a, b) => b.year - a.year);
+    }
+
+    function findActionMovies(displayedGenre) {
+        return [...allFilms].filter(film => film.genres.find(genre => genre === displayedGenre)).sort((a, b) => b.year - a.year)
+    }
+
 
 
     //do rozwazenia <Carousel fade>
     return (
         <div className='homepage'>
 
-            <Carousel>
-                <Carousel.Item interval={8000}>
-                    <CarouselImage />
-                </Carousel.Item>
-                <Carousel.Item interval={8000}>
-                    <CarouselImage />
-                </Carousel.Item>
-                <Carousel.Item interval={8000}>
-                    <CarouselImage />
-                </Carousel.Item>
+            <Carousel fade>
+                {allFilms.slice(9, 12).map((movie, index) => (
+                    <Carousel.Item key={index} interval={8000}>
+                        <CarouselImage movie={movie} />
+                    </Carousel.Item>
+                ))}
             </Carousel>
             <div className='moviesLists'>
                 <div className='playingNow'>
@@ -35,10 +50,9 @@ const HomePage = () => {
                         widthHover="390px"
                         height="480px"
                         heightHover="500px"
-
+                        allFilms={findPlayingNow()}
                     />
                 </div>
-
                 <div className='popularList'>
                     <MoviesSlider
                         title="CULT FAVORITES"
@@ -47,6 +61,7 @@ const HomePage = () => {
                         widthHover="500px"
                         height="290px"
                         heightHover="310px"
+                        allFilms={allFilms}
                     />
                 </div>
                 <div className='actionBox'>
@@ -60,7 +75,9 @@ const HomePage = () => {
                             width="240px"
                             widthHover="260px"
                             height="310px"
-                            heightHover="330px" />
+                            heightHover="330px"
+                            allFilms={findActionMovies("Action")}/>
+                        
                     </div>
                 </div>
                 <div className='laughOutLoudBox'>
@@ -73,7 +90,9 @@ const HomePage = () => {
                             width="240px"
                             widthHover="260px"
                             height="310px"
-                            heightHover="330px" />
+                            heightHover="330px"
+                            allFilms={findActionMovies("Comedy")}
+                             />
                     </div>
                 </div>
                 <div className='dramaMoviesList'>
@@ -83,7 +102,8 @@ const HomePage = () => {
                         width="520px"
                         widthHover="540px"
                         height="600px"
-                        heightHover="620px" />
+                        heightHover="620px"
+                        allFilms={findActionMovies("History")}/>
                 </div>
             </div>
         </div >
