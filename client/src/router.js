@@ -5,6 +5,7 @@ import HomePage from "./Pages/Homepage/HomePage";
 import Movies from "./Pages/Movies/Movies";
 import Movie from "./Pages/Movie/Movie";
 import Login from "./Pages/Login/Login";
+import Watchlist from "./Pages/Watchlist/Watchlist"
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
             { path: "/movies", element: <Movies /> },
             { path: "/movies/:id", element: <Movie /> },
             { path: "/login", element: <Login /> },
+            { path: "/user", element: <Watchlist /> }
         ],
     },
 ]);

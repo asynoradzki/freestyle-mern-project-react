@@ -1,11 +1,13 @@
 import RightDrawer from "../../components/RightDrawer/RightDrawer";
 import MovieThumbnail from "../../components/Moviethumbnail/MovieThumbnail";
 import "./Movies.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import UserContext from '../../authHelpers/UserContext'
 
 function Movies() {
     const [allFilms, setAllFilms] = useState([]);
     const [filteredFilms, setFilteredFilms] = useState([]);
+    const { loggedUser } = useContext(UserContext)
 
     useEffect(() => {
         getFilms().catch((err) => alert(err.message));
@@ -30,7 +32,6 @@ function Movies() {
                 </div>
                 <div className="Drawer">
                 <RightDrawer
-                       
                             allFilms={allFilms}
                             filteredFilms={filteredFilms}
                             setFilteredFilms={setFilteredFilms}

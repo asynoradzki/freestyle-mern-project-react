@@ -42,4 +42,13 @@ const deleteFromWatchlist = async function(req, res) {
     }
 }
 
-module.exports = { getUsers, signInUser, addToWatchlist, deleteFromWatchlist }
+const getMovieIds = async function(req, res) {
+    try {
+        const data = await Login.findById(req.params.id);
+        res.json(data.watchlist)
+    } catch (error) {
+        res.status(500).json({ success: false });
+    }
+}
+
+module.exports = { getUsers, signInUser, addToWatchlist, deleteFromWatchlist, getMovieIds }

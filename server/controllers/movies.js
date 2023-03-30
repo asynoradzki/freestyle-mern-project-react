@@ -1,9 +1,21 @@
 const Movie = require("../models/Movie");
 const handleError = require("../error");
+
 const getMovies = async function (req, res) {
     try {
-        const movies = await Movie.find();
-        res.json(movies);
+            const movies = await Movie.find();
+            res.json(movies);
+        // const film = getPosters(movies);
+    } catch (error) {
+        handleError(error, res);
+    }
+};
+
+const getChosenMovies = async function (req, res) {
+    try {
+        // console.log(req.body);
+            const movies = await Movie.find({ _id: req.body.movieIds });
+            res.json(movies);
         // const film = getPosters(movies);
     } catch (error) {
         handleError(error, res);
@@ -41,4 +53,4 @@ async function updateMovie(id, film) {
     }
 }
 
-module.exports = { getMovies, getMovie, updateMovie };
+module.exports = { getMovies, getMovie, getChosenMovies, updateMovie };

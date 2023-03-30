@@ -43,9 +43,9 @@ const Login = () => {
             const response = await fetchData(`${url}/api/users`, "POST", data)
             if (response.token) {
                 localStorage.setItem('token', response.token);
-                console.log(response)
+                // console.log(response.user)
                 setLoggedUser(response.user)
-                // window.location.reload(); ??
+               // window.location.reload();
                 console.log('User logged in successfully!');
                 alert("You have successfully logged in! Let's explore the movie universe. You can now browse movies and add them to your favorites list.");
                 /* const token = localStorage.getItem("token");

@@ -19,7 +19,7 @@ const createUser = async function (res, req) {
         const data = await newUser.save();
         res.json(data);
     } catch (err) {
-        handleError(error, res)
+        handleError(err, res)
     }
 } 
 

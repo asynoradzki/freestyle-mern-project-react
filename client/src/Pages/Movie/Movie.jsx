@@ -3,8 +3,9 @@ import { Typography, Rating, Box } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import ReviewInput from "../../components/ReviewInput/ReviewInput";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import UserContext from '../../authHelpers/UserContext'
 
 const labels = {
     0.5: "Useless",
@@ -48,6 +49,7 @@ function Movie() {
     const [hover, setHover] = useState(-1);
     const [clickedMovie, setClickedMovie] = useState({});
     const { id } = useParams();
+    const { loggedUser } = useContext(UserContext)
 
     useEffect(() => {
         fetchMovie(id)
@@ -58,8 +60,14 @@ function Movie() {
     }, [id]);
 
     function handleOnclick() {
-        // addToWatchlist(clickedMovie._id, '1234', "add");
+        if (loggedUser) {
+            addOrDeleteInWatchlist(clickedMovie._id, loggedUser.username, "add");
+            alert("Movie has been added to watch list")
+        } else {
+            alert("Log in to be able to add movies to watch list")
+        }
         // addOrDeleteInWatchlist(clickedMovie._id, '1234', "del");
+        // console.log(loggedUser.username);
     }
 
     return (

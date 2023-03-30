@@ -8,8 +8,8 @@ import UserContext from '../../authHelpers/UserContext'
 import { getToken } from '../../environments';
 
 const logoutUser = () => {
-  localStorage.removeItem('token');
-  window.location.reload();
+    localStorage.removeItem("token");
+    window.location.reload();
 };
 
 const NavBar = () => {
@@ -140,5 +140,3 @@ const NavBar = () => {
 }
 
 export default NavBar;
-
-

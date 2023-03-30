@@ -2,15 +2,16 @@ const express = require("express");
 const router = express.Router();
 const Login = require("../models/Login.js");
 const usersControllers = require('../controllers/users');
+const handleError = require('../error')
+const jwt = require('jsonwebtoken')
 
 router.get("/", async (req, res) => {
     try {
         const data = await Login.find();
-        console.log(data)
+        // console.log(data)
         res.json(data);
     } catch (error) {
         handleError(error, res)
-
     }
 });
 
@@ -40,6 +41,7 @@ router.post("/", async (req, res) => {
 
 router.patch("/add/:userName", usersControllers.addToWatchlist);
 router.patch("/del/:userName", usersControllers.deleteFromWatchlist);
+router.get("/:id", usersControllers.getMovieIds);
 
 
 module.exports = router;
