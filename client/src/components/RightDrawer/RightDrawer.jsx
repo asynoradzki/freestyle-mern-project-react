@@ -1,8 +1,7 @@
 import { Drawer, Box, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchMenu from '../Searchmenu/SearchMenu'
-import {useState} from "react";
-
+import './RightDrawer.css'
 
 function RightDrawer({ allFilms, setFilteredFilms, drawerState }) {
   const { isDrawerOpen, setIsDrawerOpen } = drawerState
