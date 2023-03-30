@@ -31,20 +31,17 @@ div.movieWeb {
     margin-right: auto;
     margin-bottom: auto;
     background: #1D2043;
-    /* background-color: red; */
     border-radius: 6px;
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* position: relative; */
 }
 
 div.poster {
     width: 90%;
     height: 1000px;
     background: #252953;
-    /* background-color: red; */
     opacity: 0.95;
     display: flex;
     justify-content: center;
@@ -55,14 +52,10 @@ div.big-poster {
     width: 100%;
     height: 60%;
     overflow: hidden;
-    /* position: absolute;
-    right: 0; */
-    background-color: aquamarine;
 }
 
 div.big-poster > img {
     width: 100%;
-    /* object-fit:contain; */
 }
 
 div.small-poster {
@@ -70,7 +63,6 @@ div.small-poster {
     position: absolute;
     left: 5%;
     top: 25%;
-    /* background-color:chartreuse; */
     z-index: 1;
     border-radius: 20px;
     border: 2px solid black;
@@ -87,10 +79,7 @@ div.allInfo {
     width: 50%;
     min-height: 100px;
     background: #252953;
-    /* background: red; */
     opacity: 0.95;
-    /* margin-top: 0; */
-    /* margin-bottom: 10px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -182,8 +171,19 @@ h3.name {
 }
 
 .movieInfo > button {
-    
+    background: #252953;
+    width: 150px;
+    height: 50px;
+    border-radius: 20px;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    color: white;
+    transition: all 0.2s ease;
 }
+
+.movieInfo > button:hover {
+    background: #1D2043;
+}
+
 
 div.plot {
     width: 90%;
