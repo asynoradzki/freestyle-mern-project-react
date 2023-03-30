@@ -23,23 +23,25 @@ function Movies() {
     }
 
     return (
-        <div className="Movies" style={{marginRight: isDrawerOpen ? '270px' : '0px'}}>
-                <div className="Main dark">
-                    {   filteredFilms.map((film, index) => (
-                            <MovieThumbnail
-                                key={index}
-                                film={film}
-                            />
-                        ))}
-                </div>
-                <div className="Drawer">
+        <div className="Movies" style={{ marginRight: isDrawerOpen ? '270px' : '0px' }}>
+            <div className="Main dark">
+                {filteredFilms.map((film, index) => (
+                    <MovieThumbnail
+                        key={index}
+                        film={film}
+                    />
+                ))}
+            </div>
+            <div className="Drawer">
                 <RightDrawer
-                            allFilms={allFilms}
-                            filteredFilms={filteredFilms}
+                    allFilms={allFilms}
+                    filteredFilms={filteredFilms}
                     setFilteredFilms={setFilteredFilms}
-                    drawerState={{ isDrawerOpen, setIsDrawerOpen }}
-                        />
-                </div>
+                    isDrawerOpen={isDrawerOpen}
+                    setIsDrawerOpen={setIsDrawerOpen}
+
+                />
+            </div>
         </div>
     );
 }

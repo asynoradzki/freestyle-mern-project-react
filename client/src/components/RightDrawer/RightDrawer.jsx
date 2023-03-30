@@ -4,8 +4,8 @@ import SearchMenu from '../Searchmenu/SearchMenu'
 import {useState} from "react";
 
 
-function RightDrawer({ allFilms, setFilteredFilms, drawerState }) {
-  const { isDrawerOpen, setIsDrawerOpen } = drawerState
+function RightDrawer({ allFilms, setFilteredFilms, isDrawerOpen, setIsDrawerOpen }) {
+  
 
   return (
     <div>
