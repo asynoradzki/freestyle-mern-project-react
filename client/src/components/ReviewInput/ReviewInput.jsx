@@ -4,13 +4,17 @@ import { Box, Button, InputAdornment, TextField } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import SendIcon from '@mui/icons-material/Send';
 import { useState, useEffect } from 'react';
-import { fetchData } from '../../environments';
+import { fetchDataWithAuth, getToken } from '../../environments';
+import { useNavigate } from "react-router-dom";
+
 
 const url = 'http://127.0.0.1:3001/api/comments'
 
 function ReviewInput({ clickedMovie }) {
     const [inputData, setInputData] = useState({ movieTitle: "", userName: "", comment: "" })
     const [allComments, setAllComments] = useState([])
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         if (clickedMovie) {
@@ -28,7 +32,15 @@ function ReviewInput({ clickedMovie }) {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const response = await fetchData(url, "POST", inputData)
+        if (!getToken()) {
+            const confirmed = window.confirm('You are not logged in. Do you want to log in?');
+            if (confirmed) {
+               navigate('/login');
+                return;
+            }
+        }
+
+        const response = await fetchDataWithAuth(url, "POST", inputData)
         await getData();
         setInputData({ ...inputData, userName: "", comment: "" })
     }
