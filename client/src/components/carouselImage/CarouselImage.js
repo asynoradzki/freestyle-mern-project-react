@@ -43,17 +43,17 @@ const CarouselImage = ({ movie }) => {
           size="xx-large"
           className='watchlist'
           sx={{
-            color: "white",
+            color: 'white',
             fontSize: '20px',
             fontFamily: "poppins",
-            fontWeight: "bold", "&:focus": {
-              outline: "2px solid white",
+            fontWeight: 'bold', '&:focus': {
+              outline: '2px solid white',
             },
           }}
           onClick={handleOnclick}
         >
           <AddCircleOutlineIcon
-            sx={{ fontSize: "27px", margin: '10px' }}
+            sx={{ fontSize: '27px', margin: '10px' }}
           />
           Add to watchlist
         </Button>

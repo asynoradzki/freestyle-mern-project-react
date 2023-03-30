@@ -70,7 +70,6 @@ const HomePage = () => {
                     <div className='actionTitle'>
                         <Typography variant='h2' sx={{ fontFamily: 'poppins', margin: '7px' }}>ACTION-PACKED</Typography>
                     </div>
-
                     <div className='actionPacked'>
                         <MoviesSlider
                             slideToShow={5}
@@ -79,7 +78,6 @@ const HomePage = () => {
                             height="310px"
                             heightHover="330px"
                             allFilms={findActionMovies("Action")}/>
-                        
                     </div>
                 </div>
                 <div className='laughOutLoudBox'>

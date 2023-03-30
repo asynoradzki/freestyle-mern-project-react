@@ -15,7 +15,7 @@
 .actionPacked .slick-list {
     width: 65%;
     margin-left: 680px;
-    
+
 }
 
 .laughOutLoud .slick-list {
@@ -33,13 +33,24 @@
 
 div.laughOutLoudTitle {
     position: relative;
-    top: 234px;
-   
-    left: 1600px;
+    top: 195px;
+    left: 1453px;
 }
 
 div.actionTitle {
     position: relative;
-    top: 234px;
-    left: 220px;
+    top: 198px;
+    left: 87px;
+}
+
+.slick-prev:before {
+    content: "<";
+    color: white;
+    font-size: 30px;
+}
+
+.slick-next:before {
+    content: ">";
+    color: white;
+    font-size: 30px;
 }

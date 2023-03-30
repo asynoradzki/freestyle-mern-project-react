@@ -26,7 +26,7 @@ const MiniMovie = ({ width, widthHover, height, heightHover, movie }) => {
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
-                        filter: hover ? 'blur(2px)' : 'none',
+                        filter: hover ? 'blur(2.5px)' : 'none',
                         border: hover ? '3px solid red' : "1px solid #232531",
                         '&::before': {
                             content: '""',
