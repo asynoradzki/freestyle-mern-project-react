@@ -8,6 +8,8 @@ function Movies() {
     const [allFilms, setAllFilms] = useState([]);
     const [filteredFilms, setFilteredFilms] = useState([]);
     const { loggedUser } = useContext(UserContext)
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
 
     useEffect(() => {
         getFilms().catch((err) => alert(err.message));
@@ -21,7 +23,7 @@ function Movies() {
     }
 
     return (
-        <div className="Movies">
+        <div className="Movies" style={{marginRight: isDrawerOpen ? '270px' : '0px'}}>
                 <div className="Main dark">
                     {   filteredFilms.map((film, index) => (
                             <MovieThumbnail
@@ -34,7 +36,8 @@ function Movies() {
                 <RightDrawer
                             allFilms={allFilms}
                             filteredFilms={filteredFilms}
-                            setFilteredFilms={setFilteredFilms}
+                    setFilteredFilms={setFilteredFilms}
+                    drawerState={{ isDrawerOpen, setIsDrawerOpen }}
                         />
                 </div>
         </div>
