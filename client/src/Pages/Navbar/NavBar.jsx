@@ -36,7 +36,7 @@ const NavBar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: "#DD4F4E" }} />
           <Typography
             className='logo'
             variant="h4"
@@ -48,7 +48,7 @@ const NavBar = () => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color:  '#DD4F4E',
               textDecoration: 'none',
             }}
           >
@@ -90,6 +90,7 @@ const NavBar = () => {
               </Button>
             </Link>
           </Box>
+          <Typography>{loggedUser ? loggedUser.username : ""}</Typography>
           {getToken() ?
             (<>
               <Tooltip title="Open settings">
@@ -98,7 +99,9 @@ const NavBar = () => {
                 </IconButton>
               </Tooltip>
               <Menu
-                sx={{ mt: '45px' }}
+                sx={{
+                  mt: '45px'
+                }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
@@ -114,10 +117,14 @@ const NavBar = () => {
                 onClose={() => setAnchorElUser(null)}
               >
                 <MenuItem key='watchlist' onClick={handleWatchlistRedirect}>
-                  <Typography textAlign="center">Watchlist</Typography>
+                  <Typography
+                    sx={{ color: 'white' }}
+                    textAlign="center">Watchlist</Typography>
                 </MenuItem>
                 <MenuItem key='logout' onClick={logoutUser}>
-                  <Typography textAlign="center">Logout</Typography>
+                  <Typography
+                    sx={{ color: '#DD4F4E'}}
+                    textAlign="center">Logout</Typography>
                 </MenuItem>
               </Menu>
             </>) : (<Link to='/login'>
@@ -130,7 +137,6 @@ const NavBar = () => {
               </Button>
             </Link>)
           }
-          <Typography>{loggedUser ? loggedUser.username : ""}</Typography>
         </Toolbar>
       </Container>
       <Outlet />

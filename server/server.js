@@ -14,7 +14,7 @@ app.use(express.json());
 mongoose
     .connect(process.env.MONGO_URL)
     .then(() => app.listen(3001, () => console.log("http://127.0.0.1:3001")))
-    .catch((err) => console.log(err));
+    .catch((err) => console.error(err));
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

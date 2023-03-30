@@ -9,7 +9,6 @@ const MoviesSlider = ({ title, slideToShow, width, widthHover, height, heightHov
     const [movieToDisplayList, setMovieToDisplayList] = useState([])
 
     useEffect(() => {
-        console.log(allFilms)
         if (allFilms) {
             setMovieToDisplayList(allFilms)
         }
@@ -18,7 +17,7 @@ const MoviesSlider = ({ title, slideToShow, width, widthHover, height, heightHov
 
     const settings = {
         dots: true,
-        arrows: false,
+        arrows: true,
         infinite: true,
         speed: 200,
         slidesToShow: slideToShow,
@@ -27,7 +26,7 @@ const MoviesSlider = ({ title, slideToShow, width, widthHover, height, heightHov
 //map???
     return (
         <>
-           <Typography variant='h5' sx={{ fontFamily: 'poppins', margin: '7px' }}>
+            <Typography variant='h4' sx={{ fontFamily: 'poppins', margin: '7px', color: '#DD4F4E' }}>
                 {title}
             </Typography>
             <Slider {...settings}>

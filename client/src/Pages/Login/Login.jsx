@@ -32,7 +32,6 @@ const Login = () => {
                 return alert("Password do not match");
             }
             const newUser = await response.json();
-            console.log(newUser);
         } catch (err) {
             return alert("Error checking for existing user");
         }
@@ -45,15 +44,13 @@ const Login = () => {
                 localStorage.setItem('token', response.token);
                 setLoggedUser(response.user)
                 sessionStorage.setItem("user", JSON.stringify(response.user))
-                console.log('User logged in successfully!');
                 alert("You have successfully logged in! Let's explore the movie universe. You can now browse movies and add them to your favorites list.");
                
             } else {
                 alert('Invalid username or password.')
-                console.log('Invalid username or password.');
             }
         } catch (err) {
-            console.log(err);
+            console.error(err);
         }
     };
 
@@ -64,14 +61,12 @@ const Login = () => {
             const users = await response.json();
             const user = users.find((user) => user.username === data.username);
             if (user) {
-                console.log(`Your passworod is: ${user.password}`);
                 alert(`Your passworod is: ${user.password}`);
             } else {
-                console.log(`User ${data.username} not found !`);
                 alert(`User ${data.username} not found !`);
             }
         } catch (err) {
-            console.log(err);
+            console.error(err);
         }
     };
 

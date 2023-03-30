@@ -17,3 +17,19 @@ margin-right: 60px;
 button.css-hgojsm-MuiButtonBase-root-MuiButton-root { 
 margin-right: 40px;
 }
+
+
+p.css-ahj2mt-MuiTypography-root {
+    margin: 0;
+        font-family: 'Poppins';
+        font-weight: 800;
+        font-size: 1rem;
+        line-height: 1.5;
+        letter-spacing: 0.00938em;
+        font-size: x-large;
+        margin-right: 15px;
+    }
+
+div.css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper {
+background-color: #23252ce8 
+}
