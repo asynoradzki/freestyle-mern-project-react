@@ -43,16 +43,11 @@ const Login = () => {
             const response = await fetchData(`${url}/api/users`, "POST", data)
             if (response.token) {
                 localStorage.setItem('token', response.token);
-                // console.log(response.user)
                 setLoggedUser(response.user)
-               // window.location.reload();
+                sessionStorage.setItem("user", JSON.stringify(response.user))
                 console.log('User logged in successfully!');
                 alert("You have successfully logged in! Let's explore the movie universe. You can now browse movies and add them to your favorites list.");
-                /* const token = localStorage.getItem("token");
-                console.log(token); */
-                //setLoggedUser(response.token)
-                
-                
+               
             } else {
                 alert('Invalid username or password.')
                 console.log('Invalid username or password.');

@@ -10,8 +10,7 @@ const movieSchema = new Schema({
     director: String,
     actors: [String],
     plot: String,
-    url: String
-    // poster: String,
+    url: String,
 })
 
 const Movie = model('Movie', movieSchema);

@@ -7,12 +7,18 @@ import UserContext from "../../authHelpers/UserContext";
 function Watchlist() {
     const [allFilms, setAllFilms] = useState([]);
     const [filteredFilms, setFilteredFilms] = useState([]);
-    const { loggedUser } = useContext(UserContext);
+    const { loggedUser, setLoggedUser } = useContext(UserContext);
 
     useEffect(() => {
-        console.log(loggedUser);
-        if (loggedUser) {
-            getUserWatchListMovieIds().catch((err) => alert(err.message));
+        let user;
+        if (sessionStorage.getItem("user")) {
+            const userJSON = sessionStorage.getItem("user")
+            console.log(userJSON);
+            user = JSON.parse(userJSON)
+            setLoggedUser(user);
+        }
+        if (user) {
+            getUserWatchListMovieIds(user).catch((err) => alert(err.message));
         }
     }, []);
 
@@ -36,7 +42,7 @@ function Watchlist() {
         }
     }
 
-    async function getUserWatchListMovieIds() {
+    async function getUserWatchListMovieIds(loggedUser) {
         const data = await fetch(`http://127.0.0.1:3001/api/users/${loggedUser._id}`);
         const userMovieIds = await data.json();
         await getFilms(userMovieIds);
