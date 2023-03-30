@@ -28,6 +28,7 @@ const NavBar = () => {
     localStorage.removeItem('token');
     sessionStorage.removeItem('user');
     window.location.reload();
+    navigate('/')
   };
 
 

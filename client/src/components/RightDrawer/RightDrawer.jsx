@@ -3,8 +3,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchMenu from '../Searchmenu/SearchMenu'
 import './RightDrawer.css'
 
-function RightDrawer({ allFilms, setFilteredFilms, drawerState }) {
-  const { isDrawerOpen, setIsDrawerOpen } = drawerState
+function RightDrawer({ allFilms, setFilteredFilms, isDrawerOpen, setIsDrawerOpen }) {
+  
 
   return (
     <div>

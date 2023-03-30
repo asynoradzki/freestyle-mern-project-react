@@ -25,6 +25,7 @@ function Movies() {
 
     return (
         <div className="Movies" style={{ marginRight: isDrawerOpen ? '270px' : '0px' }}>
+
             <div className='menuMoviesList'>
             <MenuIcon
                 fontSize="large"
@@ -53,12 +54,14 @@ function Movies() {
                 </div>
                 <div className="Drawer">
                 <RightDrawer
-                            allFilms={allFilms}
-                            filteredFilms={filteredFilms}
+                    allFilms={allFilms}
+                    filteredFilms={filteredFilms}
                     setFilteredFilms={setFilteredFilms}
-                    drawerState={{ isDrawerOpen, setIsDrawerOpen }}
-                        />
-                </div>
+                    isDrawerOpen={isDrawerOpen}
+                    setIsDrawerOpen={setIsDrawerOpen}
+
+                />
+            </div>
         </div>
     );
 }
