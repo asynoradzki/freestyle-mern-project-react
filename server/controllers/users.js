@@ -1,5 +1,6 @@
 const Login = require('../models/Login')
 const handleError = require('../error')
+const jwt = require('jsonwebtoken')
 
 const getUsers = async (req, res) => {
     try {
@@ -8,19 +9,29 @@ const getUsers = async (req, res) => {
     } catch (error) {
         handleError(error, res)
     }
-});
+}
 
-const signInUser = async function (res, req) {
-    const { username, password } = req.body;
-    const newUser = new Login({
-        username,
-        password,
-    });
+const logInUser = async (req, res) => {
     try {
-        const data = await newUser.save();
-        res.json(data);
+        const { username, password } = req.body;
+        if (!username || !password) {
+            return res.status(400).json({ message: 'Please provide username and password' })
+        }
+        const user = await Login.findOne({ username }).select('+password')
+        if (!user || !(await user.correctPassword(password, user.password))) {
+            return res.status(401).json({ message: 'Incorrect username or password' })
+        }
+        const token = jwt.sign({ id: user._id }, process.env.ACCES_TOKEN_SECRET, {
+            expiresIn: process.env.JWT_EXPIRES_IN
+        })
+        res.status(200).json({
+            status: "success",
+            token,
+            user,
+        })
     } catch (err) {
-        res.status(400).json({ success: false });
+        handleError(err, res)
+
     }
 }
 
@@ -53,4 +64,6 @@ const getMovieIds = async function(req, res) {
 
 
 
-module.exports = { getUsers, signInUser, addToWatchlist, deleteFromWatchlist, getMovieIds }
+
+
+module.exports = { getUsers, logInUser, addToWatchlist, deleteFromWatchlist, getMovieIds }
