@@ -3,11 +3,13 @@ import './homepage.css'
 import { Carousel } from 'react-bootstrap'
 import CarouselImage from '../../components/carouselImage/CarouselImage';
 import MoviesSlider from '../../components/MoviesSlider/MoviesSlider';
+import MiniMovie from '../../components/MiniMovie/MiniMovie';
 
 const HomePage = () => {
     //do rozwazenia <Carousel fade>
     return (
         <div className='homepage'>
+           
             <Carousel>
                 <Carousel.Item interval={8000}>
                     <CarouselImage />
@@ -18,27 +20,30 @@ const HomePage = () => {
                 <Carousel.Item interval={8000}>
                     <CarouselImage />
                 </Carousel.Item>
-            </Carousel>
+            </Carousel> 
+           
+            
             <div className='moviesLists'>
                 <MoviesSlider
                     title="PLAYING NOW"
-                    slideToShow={3}
+                    slideToShow={4}
                     width="400px"
                     widthHover="420px"
                     height="500px"
                     heightHover="520px"
-                    name="nowPlayingList"
+                   
                 />
-            </div>
+            </div> 
 
-                {/* <div className='popularList'>
+                <div className='popularList'>
                     <MoviesSlider
                         title="CULT FAVORITES"
                         slideToShow={3}
                         width="500px"
                         widthHover="520px"
                         height="300px"
-                        heightHover="320px" />
+                    heightHover="320px"
+                    />
                 </div>
                 <div className='topRatedList'>
                     <MoviesSlider
@@ -52,7 +57,7 @@ const HomePage = () => {
                 <div className='actionMoviesList'>
                     <MoviesSlider
                         title="LAUGH-OUT-LOUD"
-                        slideToShow={44}
+                        slideToShow={6}
                         width="200px"
                         widthHover="210px"
                         height="250px"
@@ -66,7 +71,7 @@ const HomePage = () => {
                         widthHover="420px"
                         height="500px"
                         heightHover="520px" />
-                </div> */}
+                </div> 
           
         </div >
     )

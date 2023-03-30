@@ -4,7 +4,7 @@ import MiniMovie from "../MiniMovie/MiniMovie";
 import './moviesSlider.css'
 import { Typography } from '@mui/material'
 
-const MoviesSlider = ({ title, slideToShow, width, widthHover, height, heightHover, name }) => {
+const MoviesSlider = ({ title, slideToShow, width, widthHover, height, heightHover }) => {
 
     const settings = {
         dots: true,
@@ -16,7 +16,7 @@ const MoviesSlider = ({ title, slideToShow, width, widthHover, height, heightHov
     }
 //map???
     return (
-        <div className={name} >
+        <>
             <Typography variant='h1'>
                 {title}
             </Typography>
@@ -70,7 +70,7 @@ const MoviesSlider = ({ title, slideToShow, width, widthHover, height, heightHov
                     />
                 </div>
             </Slider>
-        </div>
+        </>
     );
 
 }

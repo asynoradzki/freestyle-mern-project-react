@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './MiniMovie.css'
-import { Paper, Card, CardContent, Typography, CardMedia, CardActions, Button, Tooltip, Fade } from '@mui/material';
+import { Card, CardContent, Typography, CardMedia, CardActions, Button, Tooltip, Fade } from '@mui/material';
 
 const MiniMovie = ({ width, widthHover, height, heightHover }) => {
     const [hover, setHover] = useState(false);

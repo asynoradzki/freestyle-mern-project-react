@@ -3,4 +3,5 @@
 :root .dark {
    --dark-mode-background: #262932;
    --dark-mode-primary: #262932;
+   --dark-mode-text: #F7EFE5;
 }

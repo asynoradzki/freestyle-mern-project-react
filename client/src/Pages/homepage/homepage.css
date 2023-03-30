@@ -5,6 +5,7 @@ div.homepage {
     background-color: #262932;
     min-width: 100%;
     min-height: 100%;
+    
 }
 
 .carousel {
@@ -26,3 +27,8 @@ div.homepage {
     transition: opacity 0.5s ease-in-out;
 }
 
+.moviesListst {
+margin-top: 24vh;
+    display: flex;
+    flex-direction: column;
+}
