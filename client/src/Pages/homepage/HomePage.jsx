@@ -7,8 +7,10 @@ import { Typography } from '@mui/material';
 import { useState } from 'react'
 
 
+
 const HomePage = () => {
     const [allFilms, setAllFilms] = useState([]);
+
 
     useEffect(() => {
         getFilms().catch((err) => alert(err.message));

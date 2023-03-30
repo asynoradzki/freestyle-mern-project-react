@@ -2,12 +2,15 @@ import './carouselImage.css'
 import { Carousel } from 'react-bootstrap'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import Button from '@mui/material/Button';
-import { useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
+
 
 
 
 const CarouselImage = ({ movie }) => {
-const { url, title, runtime, year, genres} = movie
+  const { url, title, runtime, year, genres } = movie
+  const navigate = useNavigate();
+
 
   return (
     <div className='carouselImage'>
@@ -17,7 +20,9 @@ const { url, title, runtime, year, genres} = movie
         alt="First slide"
       />
       <Carousel.Caption>
-        <h3 className='title'>{title}</h3>
+        <h3
+          onClick={() => navigate(`/movies/${movie._id}`)}
+          className='title'>{title}</h3>
         <p className='genre'>{genres.join(', ')}</p>
         <p className='runtime'>{runtime} min</p>
         <p className='releaseDate' >Release year: {year}</p>
