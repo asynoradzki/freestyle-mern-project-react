@@ -2,27 +2,25 @@ import './navbar.css';
 import * as React from 'react';
 import { Button, Avatar, Tooltip, Menu, MenuItem, AppBar, Box, Toolbar, IconButton, Typography, Container } from '@mui/material'
 import AdbIcon from '@mui/icons-material/Adb';
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from 'react'
 import UserContext from '../../authHelpers/UserContext'
 import { getToken } from '../../environments';
 
-const logoutUser = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
-};
 
 const NavBar = () => {
   const { loggedUser } = useContext(UserContext);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const navigate = useNavigate();
 
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleWatchlistRedirect = () => {
     setAnchorElUser(null);
+    navigate('/user')
   };
 
   const logoutUser = () => {
@@ -111,9 +109,9 @@ const NavBar = () => {
                   horizontal: 'right',
                 }}
                 open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
+                onClose={() => setAnchorElUser(null)}
               >
-                <MenuItem key='watchlist' onClick={handleCloseUserMenu}>
+                <MenuItem key='watchlist' onClick={handleWatchlistRedirect}>
                   <Typography textAlign="center">Watchlist</Typography>
                 </MenuItem>
                 <MenuItem key='logout' onClick={logoutUser}>
