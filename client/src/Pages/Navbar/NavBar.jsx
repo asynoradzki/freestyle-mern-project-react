@@ -26,6 +26,7 @@ const NavBar = () => {
   const logoutUser = () => {
     setAnchorElUser(null);
     localStorage.removeItem('token');
+    sessionStorage.removeItem('user');
     window.location.reload();
   };
 

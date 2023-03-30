@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import './MiniMovie.css'
 import { Card, CardContent, Typography, CardMedia, Tooltip, Fade } from '@mui/material';
+import { useNavigate } from "react-router-dom";
+
 
 const MiniMovie = ({ width, widthHover, height, heightHover, movie }) => {
+    const navigate = useNavigate();
     const [hover, setHover] = useState(false);
 
     return (
@@ -14,6 +17,7 @@ const MiniMovie = ({ width, widthHover, height, heightHover, movie }) => {
             }}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
+            onClick={() => navigate(`/movies/${movie._id}`)}
         >
             <CardContent sx={{ position: 'relative' }}>
                 <CardMedia
