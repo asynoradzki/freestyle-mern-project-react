@@ -33,11 +33,11 @@ h3.title:hover {
 }
 
 .carousel-control-prev {
-    left: -8.8vh;
+    left: -3.5vh;
 }
 
 .carousel-control-next {
-    right: -8.8vh;
+    right: -3.5vh;
 }
 
 .carousel-indicators {
@@ -83,3 +83,4 @@ button.css-1jw6hr3-MuiButtonBase-root-MuiButton-root:hover {
     border: 1px solid white;
     font-size: 22px;
 }
+
