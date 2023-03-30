@@ -9,7 +9,6 @@ const MoviesSlider = ({ title, slideToShow, width, widthHover, height, heightHov
     const [movieToDisplayList, setMovieToDisplayList] = useState([])
 
     useEffect(() => {
-        console.log(allFilms)
         if (allFilms) {
             setMovieToDisplayList(allFilms)
         }

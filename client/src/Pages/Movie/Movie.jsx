@@ -29,7 +29,7 @@ async function fetchMovie(_id) {
     return await movie.json();
 }
 
-async function addOrDeleteInWatchlist(_id, userName, addOrDelString) {
+export async function addOrDeleteInWatchlist(_id, userName, addOrDelString) {
     const data = { _id: _id };
     try {
         await fetch(`http://127.0.0.1:3001/api/users/${addOrDelString}/${userName}`, {
@@ -63,11 +63,10 @@ function Movie() {
     function handleOnclick() {
         if (loggedUser) {
             addOrDeleteInWatchlist(clickedMovie._id, loggedUser.username, "add");
-            alert("Movie has been added to watch list");
+            alert("Movie has been added to watchlist");
         } else {
-            alert("Log in to be able to add movies to watch list");
+            alert("Log in to be able to add movies to watchlist");
         }
-        // addOrDeleteInWatchlist(clickedMovie._id, '1234', "del");
     }
 
     return (
@@ -102,7 +101,6 @@ function Movie() {
                                     getLabelText={getLabelText}
                                     onChange={(event, newValue) => {
                                         setValue(newValue);
-                                        console.log(newValue);
                                     }}
                                     onChangeActive={(event, newHover) => {
                                         setHover(newHover);

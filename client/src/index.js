@@ -13,7 +13,6 @@ const AppWrapper = () => {
   useEffect(() => {
     if (sessionStorage.getItem("user")) {
         const userJSON = sessionStorage.getItem("user")
-        // console.log(userJSON);
         setLoggedUser(JSON.parse(userJSON))
     }
   }, [])

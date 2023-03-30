@@ -13,7 +13,6 @@ function Watchlist() {
         let user;
         if (sessionStorage.getItem("user")) {
             const userJSON = sessionStorage.getItem("user")
-            console.log(userJSON);
             user = JSON.parse(userJSON)
             setLoggedUser(user);
         }
