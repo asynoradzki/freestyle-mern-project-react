@@ -17,7 +17,8 @@ div.yourRating {
 div.yearContainer,
 div.runtimeContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
 }
 
 
@@ -36,12 +37,12 @@ div.movieWeb {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
+    /* position: relative; */
 }
 
 div.poster {
     width: 90%;
-    height: 600px;
+    height: 1000px;
     background: #252953;
     /* background-color: red; */
     opacity: 0.95;
@@ -52,7 +53,7 @@ div.poster {
 
 div.big-poster {
     width: 100%;
-    height: 100%;
+    height: 60%;
     overflow: hidden;
     /* position: absolute;
     right: 0; */
@@ -68,7 +69,7 @@ div.small-poster {
     width: 40%;
     position: absolute;
     left: 5%;
-    top: 50%;
+    top: 25%;
     /* background-color:chartreuse; */
     z-index: 1;
     border-radius: 20px;
@@ -82,23 +83,28 @@ div.small-poster > img {
 
 
 div.allInfo {
+    box-sizing: border-box;
     width: 50%;
     min-height: 100px;
     background: #252953;
+    /* background: red; */
     opacity: 0.95;
-    margin-top: 0;
-    margin-bottom: 10px;
+    /* margin-top: 0; */
+    /* margin-bottom: 10px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: absolute;
+    z-index: 2;
     right: 0;
+    bottom: 0;
 }
 
 div.rating {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 180px;
 }
 
 span.css-iljtu2-MuiRating-root {
@@ -106,12 +112,19 @@ span.css-iljtu2-MuiRating-root {
 }
 
 
-div.yourRating,
+div.yourRating {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    align-items: center;
+}
+
+
 div.webRating {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 20px
+    margin: 20px;
+    align-items: center;
 }
 
 div.additionInfo {
@@ -164,8 +177,12 @@ h3.name {
 
 
 .rating svg.css-i4bv87-MuiSvgIcon-root {
-    position: relative;
-    left: 34px
+    /* position: relative;
+    left: 34px */
+}
+
+.movieInfo > button {
+    
 }
 
 div.plot {
@@ -200,7 +217,10 @@ padding: 40px 20px;
 }
 
 div.movieInfo {
-margin-left: 20px}
+display: flex;
+flex-direction: column;
+align-items: center;
+}
 
 form.css-otp49b {
     display: flex;

@@ -5,7 +5,7 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import ReviewInput from "../../components/ReviewInput/ReviewInput";
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import UserContext from '../../authHelpers/UserContext'
+import UserContext from "../../authHelpers/UserContext";
 
 const labels = {
     0.5: "Useless",
@@ -49,12 +49,13 @@ function Movie() {
     const [hover, setHover] = useState(-1);
     const [clickedMovie, setClickedMovie] = useState({});
     const { id } = useParams();
-    const { loggedUser } = useContext(UserContext)
+    const { loggedUser } = useContext(UserContext);
 
     useEffect(() => {
         fetchMovie(id)
             .then((movie) => {
                 setClickedMovie(movie[0]);
+                setValue(movie[0].rating);
             })
             .catch((error) => console.error(error));
     }, [id]);
@@ -62,12 +63,11 @@ function Movie() {
     function handleOnclick() {
         if (loggedUser) {
             addOrDeleteInWatchlist(clickedMovie._id, loggedUser.username, "add");
-            alert("Movie has been added to watch list")
+            alert("Movie has been added to watch list");
         } else {
-            alert("Log in to be able to add movies to watch list")
+            alert("Log in to be able to add movies to watch list");
         }
         // addOrDeleteInWatchlist(clickedMovie._id, '1234', "del");
-        // console.log(loggedUser.username);
     }
 
     return (
@@ -79,30 +79,30 @@ function Movie() {
                 <div className="small-poster">
                     <img src={clickedMovie.url} alt={clickedMovie.title} />
                 </div>
-            </div>
-            <div className="allInfo">
-                <div className="movieInfo">
-                    <button onClick={handleOnclick}>Add to watchlist</button>
-                    <Typography className="title" variant="overline">
-                        {clickedMovie.title}
-                    </Typography>
-                    <div className="rating">
-                        <div className="yourRating">
-                            <Typography className="yourRating">Your rating</Typography>
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    flexDirection: "column",
-                                }}
-                            >
-                                <Rating
+                <div className="allInfo">
+                    <div className="movieInfo">
+                        <button onClick={handleOnclick}>Add to watchlist</button>
+                        <Typography className="title" variant="overline">
+                            {clickedMovie.title}
+                        </Typography>
+                        <div className="rating">
+                            <div className="yourRating">
+                                <Typography className="yourRating">Your rating</Typography>
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        flexDirection: "column",
+                                    }}
+                                >
+                                    <Rating
                                     name="hover-feedback"
                                     value={value}
                                     precision={0.5}
                                     getLabelText={getLabelText}
                                     onChange={(event, newValue) => {
                                         setValue(newValue);
+                                        console.log(newValue);
                                     }}
                                     onChangeActive={(event, newHover) => {
                                         setHover(newHover);
@@ -111,37 +111,39 @@ function Movie() {
                                         <StarIcon className="rating" style={{ opacity: 0.55 }} fontSize="inherit" />
                                     }
                                 />
-                                {value !== null && (
-                                    <Box sx={{ ml: 2, margin: "5px" }}>{labels[hover !== -1 ? hover : value]}</Box>
-                                )}
-                            </Box>
-                        </div>
+                                    {value !== null && (
+                                        <Box sx={{ ml: 2, margin: "5px" }}>{labels[hover !== -1 ? hover : value]}</Box>
+                                    )}
+                                </Box>
+                            </div>
 
-                        <div className="webRating">
-                            <Typography className="webRating">MovieApp rating</Typography>
-                            <StarRateIcon className="rating" />
+                            <div className="webRating">
+                                <Typography className="webRating">MovieApp rating</Typography>
+                                <StarRateIcon className="rating" />
+                            </div>
                         </div>
-                    </div>
-                    <div className="additionInfo">
-                        <div className="yearContainer">
-                            <Typography className="year" variant="overline">
-                                year:
-                            </Typography>
-                            <Typography className="yearValue" variant="overline">
-                                {clickedMovie.year}
-                            </Typography>
-                        </div>
-                        <div className="runtimeContainer">
-                            <Typography className="runtime" variant="overline">
-                                runtime:
-                            </Typography>
-                            <Typography className="runtimeValue" variant="overline">
-                                {clickedMovie.runtime}
-                            </Typography>
+                        <div className="additionInfo">
+                            <div className="yearContainer">
+                                <Typography className="year" variant="overline">
+                                    year:
+                                </Typography>
+                                <Typography className="yearValue" variant="overline">
+                                    {clickedMovie.year}
+                                </Typography>
+                            </div>
+                            <div className="runtimeContainer">
+                                <Typography className="runtime" variant="overline">
+                                    runtime:
+                                </Typography>
+                                <Typography className="runtimeValue" variant="overline">
+                                    {clickedMovie.runtime}
+                                </Typography>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             {/* <div className="plot"></div>
             <div className="directors"></div>
             <div className="actors"></div> */}
