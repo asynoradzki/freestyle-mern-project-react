@@ -5,18 +5,19 @@
     flex-direction: row;
     align-items: flex-begin;
     width: 200px;
-    height: 460px; 
+    height: 460px;
     background-color: var(--dark-mode-secondary);
-    background-color:rgb(50, 42, 56, 0.5);
+    background-color: rgb(50, 42, 56, 0.5);
     border: 1px solid black;
     /* border: 1px solid var(--dark-mode-secondary); */
     border-radius: 20px;
     margin: 1em;
-    padding: 0;
-    
+    padding-left: 10px;
+    padding-right: 10px;
+
 }
 
-.movieThumbnailButton  {
+.movieThumbnailButton {
     border: none;
     border-radius: 20px;
     background: none;

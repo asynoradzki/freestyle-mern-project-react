@@ -8,14 +8,6 @@ function RightDrawer({ allFilms, setFilteredFilms, drawerState }) {
 
   return (
     <div>
-      <MenuIcon
-        fontSize="large"
-        color="neutral"
-        edge="start"
-        aria-label="logo"
-        onClick={() => setIsDrawerOpen(true)}
-        >
-        </MenuIcon>
       <Drawer
         anchor="right"
         variant="temporary"
