@@ -26,11 +26,18 @@ const MoviesSlider = ({ title, slideToShow, width, widthHover, height, heightHov
 //map???
     return (
         <>
-            <Typography variant='h4' sx={{ fontFamily: 'poppins', margin: '7px', color: '#DD4F4E' }}>
+            <Typography
+                variant='h4'
+                className='title'
+                sx={{
+                    fontFamily: 'poppins',
+                    margin: '7px',
+                    color: '#DD4F4E'
+                }}>
                 {title}
             </Typography>
             <Slider {...settings}>
-                {( movieToDisplayList.slice(0, 8).map((movie, index) => (
+                {( movieToDisplayList.slice(0, 10).map((movie, index) => (
                     <div key={index}>
                         <MiniMovie
                             width={width}
