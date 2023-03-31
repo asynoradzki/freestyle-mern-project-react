@@ -11,7 +11,6 @@ function Movies() {
     const [filteredFilms, setFilteredFilms] = useState([]);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-
     useEffect(() => {
         getFilms().catch((err) => alert(err.message));
     }, []);

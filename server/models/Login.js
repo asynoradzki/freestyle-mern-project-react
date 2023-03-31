@@ -13,6 +13,7 @@
       selected:false
     },
     watchlist: [String],
+    ratings: [{filmId: String, rating: Number}]
   });
 
   loginSchema.pre('save', async function (next) {

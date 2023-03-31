@@ -29,10 +29,33 @@ async function fetchMovie(_id) {
     return await movie.json();
 }
 
+async function getUserRatings(loggedUser) {
+    const data = await fetch(`http://127.0.0.1:3001/api/users/rating/${loggedUser._id}`);
+    return await data.json();
+}
+
 export async function addOrDeleteInWatchlist(_id, userName, addOrDelString) {
     const data = { _id: _id };
     try {
         await fetch(`http://127.0.0.1:3001/api/users/${addOrDelString}/${userName}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+async function setMovieRating(loggedUser, filmId, rating) {
+    const data = {
+        filmId: filmId,
+        rating: rating,
+    };
+    try {
+        await fetch(`http://127.0.0.1:3001/api/users/rating/add/${loggedUser._id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -55,18 +78,41 @@ function Movie() {
         fetchMovie(id)
             .then((movie) => {
                 setClickedMovie(movie);
-                setValue(movie.rating);
+                if (loggedUser) {
+                    getUserRatings(loggedUser)
+                        .then((userData) => {
+                            const movieId = userData[0].ratings.find((rating) => rating.filmId === movie[0]._id);
+                            if (movieId) {
+                                setValue(movieId.rating);
+                            }
+                        })
+                        .catch((error) => console.error(error));
+                }
             })
             .catch((error) => console.error(error));
     }, [id]);
 
-    function handleOnclick() {
+    function handleAddOnclick() {
         if (loggedUser) {
             addOrDeleteInWatchlist(clickedMovie._id, loggedUser.username, "add");
             alert("Movie has been added to watchlist");
         } else {
             alert("Log in to be able to add movies to watchlist");
         }
+    }
+
+    function handleRemoveOnclick() {
+        if (loggedUser) {
+            addOrDeleteInWatchlist(clickedMovie._id, loggedUser.username, "del");
+            alert("Movie has been removed from watch list");
+        } else {
+            alert("Log in to be able to add movies to watch list");
+        }
+    }
+
+    function handleRatingChange(event, newValue) {
+        setValue(newValue);
+        setMovieRating(loggedUser, clickedMovie._id, newValue);
     }
 
     return (
@@ -80,7 +126,10 @@ function Movie() {
                 </div>
                 <div className="allInfo">
                     <div className="movieInfo">
-                        <button onClick={handleOnclick}>Add to watchlist</button>
+                        <div className="Buttons">
+                            <button onClick={handleAddOnclick}>Add to watchlist</button>
+                            <button onClick={handleRemoveOnclick}>Remove from watchlist</button>
+                        </div>
                         <Typography className="title" variant="overline">
                             {clickedMovie.title}
                         </Typography>
@@ -95,20 +144,18 @@ function Movie() {
                                     }}
                                 >
                                     <Rating
-                                    name="hover-feedback"
-                                    value={value}
-                                    precision={0.5}
-                                    getLabelText={getLabelText}
-                                    onChange={(event, newValue) => {
-                                        setValue(newValue);
-                                    }}
-                                    onChangeActive={(event, newHover) => {
-                                        setHover(newHover);
-                                    }}
-                                    emptyIcon={
-                                        <StarIcon className="rating" style={{ opacity: 0.55 }} fontSize="inherit" />
-                                    }
-                                />
+                                        name="hover-feedback"
+                                        value={value}
+                                        precision={0.5}
+                                        getLabelText={getLabelText}
+                                        onChange={(event, newValue) => handleRatingChange(event, newValue)}
+                                        onChangeActive={(event, newHover) => {
+                                            setHover(newHover);
+                                        }}
+                                        emptyIcon={
+                                            <StarIcon className="rating" style={{ opacity: 0.55 }} fontSize="inherit" />
+                                        }
+                                    />
                                     {value !== null && (
                                         <Box sx={{ ml: 2, margin: "5px" }}>{labels[hover !== -1 ? hover : value]}</Box>
                                     )}
@@ -141,10 +188,6 @@ function Movie() {
                     </div>
                 </div>
             </div>
-
-            {/* <div className="plot"></div>
-            <div className="directors"></div>
-            <div className="actors"></div> */}
             <ReviewInput clickedMovie={clickedMovie} />
         </div>
     );

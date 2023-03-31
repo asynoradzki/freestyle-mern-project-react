@@ -7,6 +7,7 @@ import UserContext from "../../authHelpers/UserContext";
 function Watchlist() {
     const [allFilms, setAllFilms] = useState([]);
     const [filteredFilms, setFilteredFilms] = useState([]);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const { loggedUser, setLoggedUser } = useContext(UserContext);
 
     useEffect(() => {
@@ -55,7 +56,12 @@ function Watchlist() {
                 ))}
             </div>
             <div className="Drawer">
-                <RightDrawer allFilms={allFilms} filteredFilms={filteredFilms} setFilteredFilms={setFilteredFilms} />
+                <RightDrawer
+                    allFilms={allFilms}
+                    filteredFilms={filteredFilms}
+                    setFilteredFilms={setFilteredFilms}
+                    drawerState={{ isDrawerOpen, setIsDrawerOpen }}
+                />
             </div>
         </div>
     );

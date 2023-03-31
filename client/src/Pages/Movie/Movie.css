@@ -170,9 +170,9 @@ h3.name {
     left: 34px */
 }
 
-.movieInfo > button {
+.movieInfo > .Buttons > button {
     background: #252953;
-    width: 150px;
+    width: 200px;
     height: 50px;
     border-radius: 20px;
     font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -180,7 +180,7 @@ h3.name {
     transition: all 0.2s ease;
 }
 
-.movieInfo > button:hover {
+.movieInfo > .Buttons > button:hover {
     background: #1D2043;
 }
 
