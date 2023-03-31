@@ -3,12 +3,14 @@ import { useContext } from "react";
 import ReactSignupLoginComponent from "react-signup-login-component";
 import { fetchData } from '../../environments'
 import UserContext from '../../authHelpers/UserContext'
+import { useNavigate } from 'react-router-dom'
 
 const headers = { "Content-Type": "application/json" };
 const url = `http://localhost:3001`;
 
 const Login = () => {
     const { setLoggedUser } = useContext(UserContext)
+    const navigate = useNavigate()
    
 
     const signupWasClickedCallback = async (data) => {
@@ -45,7 +47,7 @@ const Login = () => {
                 setLoggedUser(response.user)
                 sessionStorage.setItem("user", JSON.stringify(response.user))
                 alert("You have successfully logged in! Let's explore the movie universe. You can now browse movies and add them to your favorites list.");
-               
+                navigate('/')
             } else {
                 alert('Invalid username or password.')
             }
