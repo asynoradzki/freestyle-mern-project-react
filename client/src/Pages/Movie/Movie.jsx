@@ -54,8 +54,8 @@ function Movie() {
     useEffect(() => {
         fetchMovie(id)
             .then((movie) => {
-                setClickedMovie(movie[0]);
-                setValue(movie[0].rating);
+                setClickedMovie(movie);
+                setValue(movie.rating);
             })
             .catch((error) => console.error(error));
     }, [id]);

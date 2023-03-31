@@ -40,7 +40,7 @@ div.movieWeb {
 
 div.poster {
     width: 90%;
-    height: 1000px;
+    height: 1400px;
     background: #252953;
     opacity: 0.95;
     display: flex;
@@ -59,7 +59,7 @@ div.big-poster > img {
 }
 
 div.small-poster {
-    width: 40%;
+    width: 29%;
     position: absolute;
     left: 5%;
     top: 25%;

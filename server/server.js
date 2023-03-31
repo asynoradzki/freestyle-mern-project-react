@@ -4,9 +4,9 @@ const cors = require("cors");
 const app = express();
 const movieRoutes = require("./routes/movies");
 const commentRoutes = require("./routes/comments");
-const usersRoutes = require("./routes/users")
-const registerRoutes = require("./routes/register")
-const dotenv = require('dotenv').config()
+const usersRoutes = require("./routes/users");
+const registerRoutes = require("./routes/register");
+const dotenv = require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
@@ -24,7 +24,5 @@ app.use(function (req, res, next) {
 
 app.use("/api/movies", movieRoutes);
 app.use("/api/comments", commentRoutes);
-app.use("/api/users", usersRoutes)
-app.use("/api/register", registerRoutes)
-
-
+app.use("/api/users", usersRoutes);
+app.use("/api/register", registerRoutes);

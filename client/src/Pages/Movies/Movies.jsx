@@ -3,8 +3,8 @@ import MovieThumbnail from "../../components/Moviethumbnail/MovieThumbnail";
 import "./Movies.css";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState, useEffect, useContext } from "react";
-import UserContext from '../../authHelpers/UserContext'
 import {Typography} from '@mui/material'
+import {apiURL} from '../../environments'
 
 function Movies() {
     const [allFilms, setAllFilms] = useState([]);
@@ -17,7 +17,7 @@ function Movies() {
     }, []);
 
     async function getFilms() {
-        const data = await fetch("http://127.0.0.1:3001/api/movies");
+        const data = await fetch(`${apiURL}/api/movies`);
         const films = await data.json();
         setAllFilms(films);
         setFilteredFilms(films);

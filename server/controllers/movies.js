@@ -21,7 +21,7 @@ const getChosenMovies = async function (req, res) {
 
 const getMovie = async function (req, res) {
     try {
-        const movie = await Movie.find({ _id: req.params.id });
+        const movie = await Movie.findOne({ _id: req.params.id });
         res.json(movie);
     } catch (error) {
         handleError(error, res);
