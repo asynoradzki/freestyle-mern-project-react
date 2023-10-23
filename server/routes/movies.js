@@ -5,6 +5,7 @@ const moviesControllers = require('../controllers/movies')
 
 router.get("/", moviesControllers.getMovies)
 router.post("/", moviesControllers.getChosenMovies)
+router.put("/addMovies", moviesControllers.putMoviesInDB)
 router.get("/:id", moviesControllers.getMovie )
 
 module.exports = router
